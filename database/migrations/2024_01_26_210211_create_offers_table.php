@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('phone_number');
             $table->string('image');
-            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
-            $table->json('address');
-            $table->rememberToken();
+            $table->json('item');
+            $table->date('expiry_date');
+            $table->string('full_price');
+            $table->string('price');
+            $table->double('discount');
+            $table->integer('limit_user');
+            $table->string('note');
             $table->timestamps();
             $table->softDeletes();
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('offers');
     }
 };
