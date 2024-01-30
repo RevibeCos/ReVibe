@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('form_massages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id');
 
             $table->string('name');
             $table->string('phone');

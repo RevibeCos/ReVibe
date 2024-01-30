@@ -18,9 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone_number');
-            $table->string('image');
-            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
-            $table->json('address');
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->json('address')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

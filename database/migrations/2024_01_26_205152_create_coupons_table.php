@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('type',1);
             $table->string('code');
             $table->integer('limit_user');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id');
             $table->date('expiry_date');
             $table->char('status',1);
             $table->timestamps();
