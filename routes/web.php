@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,14 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/Addtocart', [CartController::class, 'add']);
+Route::get('/removetocart', [CartController::class, 'remove']);
+Route::get('/totalcart', [CartController::class, 'total']);
+Route::get('/contentcart', [CartController::class, 'content']);
+
+
+
+
+
