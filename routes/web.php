@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Laravel\Nova\Notifications\NovaNotification;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,10 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', function () {
+    $user=User::find(2);
+    $user->notify(new NovaNotification());
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
