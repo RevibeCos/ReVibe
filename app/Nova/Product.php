@@ -4,16 +4,16 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\{ID, Text, Image, Number, DateTime, Textarea};
+use Laravel\Nova\Fields\{BelongsTo, BelongsToMany, ID,Text,Image,Number,Boolean,Select,Currency,BooleanGroup, Tag};
 
-class Company extends Resource
+class Product extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Company>
+     * @var class-string<\App\Models\Product>
      */
-    public static $model = \App\Models\Company::class;
+    public static $model = \App\Models\Product::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -42,18 +42,39 @@ class Company extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')->sortable(),
 
-            Textarea::make('Description'),
+        Text::make('Name'),
 
-            Image::make('Image')->disk('public'),
+        Text::make('Description'),
 
-            Number::make('Sort Order')->sortable(),
+        Image::make('Image'),
 
-            DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
+        Number ::make('Price'),
+        Number ::make('Cost Price'),
+        Number ::make('Full Price'),
 
-            DateTime::make('Updated At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
-        ];
+        // Currency::make('Full Price')->currency('USD'),
+
+        // Currency::make('Price')->currency('USD'),
+
+        // Number::make('Discount')->step(0.01),
+
+        Boolean::make('Is New'),
+
+
+        Number::make('Sort Order'),
+
+        BelongsTo::make(__('company'), 'company', company::class)
+        ->searchable()
+        ->showCreateRelationButton(),
+        BelongsToMany::make(__('categories'), 'categories', Category::class)
+        ->searchable()
+        ->showCreateRelationButton(),
+        // Tag::make('categories'),
+        Tag::make('categories')->withPreview()->displayAsList()->showCreateRelationButton() ,
+
+
+    ];
     }
 
     /**

@@ -62,7 +62,6 @@ class Admin extends Resource
                 ->creationRules('required',Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),
 
-                // HasMany::make(__("ActionEvents"), "ActionEvents", \App\Nova\ActionEvents::class)
 
 
         ];
