@@ -3,17 +3,19 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\{Gravatar, ID, Password, Text, };
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\{ID, Text, Image, Number, DateTime, Textarea};
+use Illuminate\Validation\Rules;
 
-class Company extends Resource
+
+class Admin extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Company>
+     * @var class-string<\App\Models\Admin>
      */
-    public static $model = \App\Models\Company::class;
+    public static $model = \App\Models\Admin::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -42,17 +44,26 @@ class Company extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')->sortable(),
+            Gravatar::make()->maxWidth(50),
 
-            Textarea::make('Description'),
+            Text::make('Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
 
-            Image::make('Image')->disk('public'),
+            Text::make('Email')
+            ->filterable()
+                ->sortable()
+                ->rules('required', 'email', 'max:254')
+                ->creationRules('unique:users,email')
+                ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Number::make('Sort Order')->sortable(),
+            Password::make('Password')
+                ->onlyOnForms()
+                ->creationRules('required',Rules\Password::defaults())
+                ->updateRules('nullable', Rules\Password::defaults()),
 
-            DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
 
-            DateTime::make('Updated At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
+
         ];
     }
 

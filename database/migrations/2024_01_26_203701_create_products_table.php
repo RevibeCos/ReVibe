@@ -17,11 +17,13 @@ return new class extends Migration
             $table->unsignedBigInteger('company_id');
             $table->string('description');
             $table->string('image');
+            $table->json('images');
             $table->string('cost_price');
             $table->string('full_price');
             $table->string('price');
             $table->double('discount');
             $table->char('is_new',1);
+            $table->char('is_inst',0);
             $table->integer('sort_order');
             $table->timestamps();
             $table->softDeletes();

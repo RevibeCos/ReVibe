@@ -2,9 +2,13 @@
 
 namespace App\Helpers;
 
+use App\Nova\Admin;
 use App\Nova\Cart;
+use App\Nova\Category;
+use App\Nova\Company;
 use App\Nova\Dashboards\Main;
 use App\Nova\Favorite;
+use App\Nova\Product;
 use App\Nova\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
@@ -20,7 +24,6 @@ class Settings {
         Nova::footer(function ($request) {
             return Blade::render('');
         });
-        Nova::initialPath('/resources/users');
 
         Nova::mainMenu(function (Request $request) {
             return [
@@ -28,13 +31,14 @@ class Settings {
 
 
                 MenuSection::make('Customers', [
-                    MenuItem::resource(User::class),
-                    MenuItem::resource(Favorite::class),
+                    MenuItem::resource(Admin::class),
+                    MenuItem::resource(Company::class),
+                    MenuItem::resource(Category::class),
+                    MenuItem::resource(Product::class),
+
                 ])->icon('user')->collapsable(),
 
-                MenuSection::make('Content', [
-                    MenuItem::resource(Cart::class),
-                ])->icon('document-text')->collapsable(),
+
             ];
         });
            // Nova::enableRTL();

@@ -3,17 +3,17 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\{DateTime, ID, Text, Image, Number};
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\{ID, Text, Image, Number, DateTime, Textarea};
 
-class Company extends Resource
+class Category extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Company>
+     * @var class-string<\App\Models\Category>
      */
-    public static $model = \App\Models\Company::class;
+    public static $model = \App\Models\Category::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -41,14 +41,13 @@ class Company extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Name'),
 
-            Text::make('Name')->sortable(),
+            Text::make('Description'),
 
-            Textarea::make('Description'),
+            Image::make('Image'),
 
-            Image::make('Image')->disk('public'),
-
-            Number::make('Sort Order')->sortable(),
+            Number::make('Sort Order'),
 
             DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
 
