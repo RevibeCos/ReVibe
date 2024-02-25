@@ -15,13 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->json('item');
-            $table->date('expiry_date');
+            $table->date('expiry_date')->nullable();
             $table->string('full_price');
-            $table->string('price');
-            $table->double('discount');
-            $table->integer('limit_user');
-            $table->string('note');
+            $table->string('website_price');
+            $table->integer('limit_user')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

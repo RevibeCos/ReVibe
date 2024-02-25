@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('form_massages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('name');
             $table->string('phone');
             $table->longText('message');
             $table->char('is_read', 1)->default('0');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
 
         });
     }

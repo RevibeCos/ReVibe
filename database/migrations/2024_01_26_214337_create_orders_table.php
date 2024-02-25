@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('cart_id');
             $table->char('status',1);
             $table->string('comment');
-
             $table->char('payment_method',2);
             $table->char('payment_status',2);
             $table->char('delivery_method',2);

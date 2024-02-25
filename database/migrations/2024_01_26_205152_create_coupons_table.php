@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->char('type',1);
             $table->string('code');
-            $table->integer('limit_user');
-            $table->unsignedBigInteger('user_id');
+            $table->char('type', 1);
+            $table->integer('limit_user')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->date('expiry_date');
-            $table->char('status',1);
+            $table->char('status', 1);
+            $table->string('discount')->default(0.0)->nullable();
             $table->timestamps();
             $table->softDeletes();
 

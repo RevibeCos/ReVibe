@@ -13,8 +13,9 @@ class Admin extends Authenticatable
 {
     use SoftDeletes ,HasFactory ,Impersonatable;
 
+
     protected $fillable = [
-        'name', 'image', 'email', 'Impersonatable','email_verified_at', 'password',
+        'name', 'username', 'image', 'email', 'email_verified_at', 'password'
     ];
 
     protected $hidden = [

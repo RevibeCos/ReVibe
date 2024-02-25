@@ -10,28 +10,11 @@ class Company extends Model
 {
     use HasFactory, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name',
-        'description',
-        'image',
-        'sort_order',
+        'name', 'description', 'image'
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
-
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that should be hidden for serialization.
      *

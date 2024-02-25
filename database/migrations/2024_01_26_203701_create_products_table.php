@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            //add properties
+            // way use
             $table->string('name');
             $table->unsignedBigInteger('company_id');
             $table->string('description');
@@ -20,10 +22,11 @@ return new class extends Migration
             $table->json('images');
             $table->string('cost_price');
             $table->string('full_price');
-            $table->string('price');
+            $table->string('website_price');
             $table->double('discount');
             $table->char('is_new',1);
-            $table->char('is_inst',0);
+            $table->char('is_sail',1);
+            $table->char('is_instagram',0);
             $table->integer('sort_order');
             $table->timestamps();
             $table->softDeletes();

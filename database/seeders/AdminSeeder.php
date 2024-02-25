@@ -8,18 +8,18 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class UserSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('users')->insert([
+        DB::table('admins')->insert([
             'name' => 'Admin',
+            'username' => 'Admin',
             'email' => 'test@test.test',
             'password' => Hash::make('password'),
-            'phone_number' => Str::random(10),
 
         ]);
 
