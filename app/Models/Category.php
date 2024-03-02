@@ -5,45 +5,39 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Translatable\HasTranslations;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes,HasTranslations;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public $translatable = ['name'];
+
     protected $fillable = [
-        'name',
-        'description',
-        'image',
-        'sort_order',
+        'name', 'description', 'image', 'parent_id'
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    protected $dates = ['deleted_at'];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-
-    public function products()
+    public function parent()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+    public function isParent()
+    {
+        return $this->children()->exists();
+    }
+    public function isNotChild()
+    {
+        return is_null($this->parent_id);
+    }
+    public function isNotParent()
+    {
+        return !$this->children()->exists();
     }
 }

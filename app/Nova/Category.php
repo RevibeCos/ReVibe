@@ -3,11 +3,15 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\{DateTime, ID, Text, Image, Number};
+use Laravel\Nova\Fields\{BelongsTo, DateTime, ID, Text, Image, Number};
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Outl1ne\NovaTranslatable\HandlesTranslatable;
 
 class Category extends Resource
 {
+
+    use HandlesTranslatable;
+
     /**
      * The model the resource corresponds to.
      *
@@ -41,13 +45,17 @@ class Category extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name'),
+            // Text::make('Name'),
+
+            Text::make('Name')
+            ->rules('required', 'min:2')
+            ->translatable(),
 
             Text::make('Description'),
 
             Image::make('Image'),
 
-            Number::make('Sort Order'),
+            BelongsTo::make('Parent', 'parent', Category::class)->nullable(),
 
             DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
 

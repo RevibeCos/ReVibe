@@ -19,8 +19,10 @@ return new class extends Migration
             $table->string('price');
             $table->double('discount');
             $table->double('total_price');
-            $table->double('delivery_cost');
-            $table->unsignedBigInteger('coupon_id');
+            $table->double('delivery_cost')->nullable();
+            $table->unsignedBigInteger('coupon_id')->nullable();
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
+
             $table->timestamps();
             $table->softDeletes();
 

@@ -50,6 +50,10 @@ class Admin extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
+                Text::make('UserName')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
             Text::make('Email')
             ->filterable()
                 ->sortable()
