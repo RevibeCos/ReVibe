@@ -3,21 +3,21 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\{ID, Text, Image, Number, DateTime, Textarea};
 use Outl1ne\NovaTranslatable\HandlesTranslatable;
 
-class Company extends Resource
+class Tag extends Resource
 {
-
     use HandlesTranslatable;
 
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Company>
+     * @var class-string<\App\Models\Tag>
      */
-    public static $model = \App\Models\Company::class;
+    public static $model = \App\Models\Tag::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -45,20 +45,10 @@ class Company extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            Text::make('Name')
-            ->rules('required', 'min:2'),
-
-            Text::make('Description','description')
-            ->rules('required', 'min:2')
-            ->translatable(),
-
-            Image::make('Image')->disk('public'),
+            Text::make('Name')->rules('required', 'min:2')
+                ->translatable(),
 
 
-            DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
-
-            DateTime::make('Updated At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
         ];
     }
 

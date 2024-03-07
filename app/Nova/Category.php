@@ -50,10 +50,12 @@ class Category extends Resource
             Text::make('Name')
             ->rules('required', 'min:2')
             ->translatable(),
+            Text::make('Description','description')
+            ->rules('required', 'min:2')
+            ->translatable(),
 
-            Text::make('Description'),
-
-            Image::make('Image'),
+            Image::make('Image')
+            ->rules('required'),
 
             BelongsTo::make('Parent', 'parent', Category::class)->nullable(),
 

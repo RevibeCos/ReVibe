@@ -47,12 +47,15 @@ class Product extends Resource
 
         Text::make('Description'),
 
-        Image::make('Image'),
 
-        Number ::make('Price'),
+        Number ::make('Website Price'),
         Number ::make('Cost Price'),
         Number ::make('Full Price'),
 
+        Image::make('Image')->maxWidth(200),
+        Image::make(__('Hover Image'))->maxWidth(200),
+
+        Image::make('Main image', 'main'),
         // Currency::make('Full Price')->currency('USD'),
 
         // Currency::make('Price')->currency('USD'),
