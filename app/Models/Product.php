@@ -60,4 +60,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
+    public function carts()
+    {
+        return $this->belongsToMany(Cart::class)
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
+    }
 }

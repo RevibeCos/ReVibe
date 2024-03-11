@@ -34,6 +34,8 @@ class Settings {
 
 
         //         MenuSection::make('Customers', [
+        //             MenuItem::externalLink('Task Manger', 'https://task-manger.sadeemlanding.com/')->openInNewTab(),
+
         //             MenuItem::resource(Admin::class),
         //             MenuItem::resource(User::class),
         //             MenuItem::resource(Company::class),
