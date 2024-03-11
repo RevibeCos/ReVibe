@@ -65,17 +65,19 @@ class Product extends Resource
         Boolean::make('Is New'),
 
 
-        Number::make('Sort Order'),
 
         BelongsTo::make(__('company'), 'company', company::class)
-        ->searchable()
+
+        ->noPeeking()
         ->showCreateRelationButton(),
+
         BelongsToMany::make(__('categories'), 'categories', Category::class)
         ->searchable()
+
         ->showCreateRelationButton(),
 
         // Tag::make('categories'),
-        Tag::make('categories')->withPreview()->displayAsList()->showCreateRelationButton() ,
+        Tag::make('categories')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
 
 
     ];
