@@ -40,7 +40,6 @@ class User extends Resource
             ID::make()->sortable(),
             Text::make('Name'),
             Email::make('Email')->sortable(),
-            DateTime::make('Email Verified At')->sortable()->nullable(),
             Password::make('Password')->onlyOnForms(),
             text::make('Phone Number')->sortable(),
             Image::make('Image')->nullable(),
@@ -49,8 +48,7 @@ class User extends Resource
             Boolean::make('Remember Token')->sortable()->onlyOnIndex(),
             DateTime::make('Created At')->sortable()->onlyOnDetail(),
             DateTime::make('Updated At')->sortable()->onlyOnDetail(),
-            DateTime::make('Deleted At')->sortable()->onlyOnDetail(),
-        ];
+            ];
     }
 
     /**

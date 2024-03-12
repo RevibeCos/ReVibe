@@ -70,4 +70,8 @@ class Product extends Model
             ->withPivot('quantity', 'price')
             ->withTimestamps();
     }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'product_tags');
+    }
 }

@@ -34,7 +34,8 @@ class Offer extends Model
      */
     protected $casts = [
         'item' => 'json',
-        'expiry_date' => 'date',
+        'start_date' => 'date',
+        'end_date' => 'date',
         'discount' => 'double',
         'limit_user' => 'integer',
         'created_at' => 'datetime',

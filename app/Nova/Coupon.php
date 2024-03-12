@@ -57,21 +57,23 @@ class Coupon extends Resource
 
             Text::make('Code'),
 
-            Select::make('Type')->options([
-                'p' => 'percentage',
-                'v' => 'value',
+            Select::make('Discount Type')->options([
+                'f' => 'Fixed',
+                'r' => 'Ratio',
             ])->displayUsingLabels(),
 
             Number::make('Limit User')->nullable(),
 
             BelongsTo::make('User', 'user', User::class)->nullable(),
 
-            Date::make('Expiry Date'),
+            Date::make('Start Date'),
+            Date::make('End Date'),
 
-            Select::make('Status')->options([
+
+            Select::make('Is Active')->options([
                 'A' => 'Active',
                 'I' => 'Inactive',
-            ])->displayUsingLabels(),
+            ])->displayUsingLabels()->hideWhenCreating(),
 
             Text::make('Discount')->default(0.0)->nullable(),
 

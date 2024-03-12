@@ -55,7 +55,6 @@ class Product extends Resource
         Image::make('Image'),
         Image::make(__('Hover Image')),
 
-        Image::make('Main image', 'main'),
         // Currency::make('Full Price')->currency('USD'),
 
         // Currency::make('Price')->currency('USD'),
@@ -78,6 +77,7 @@ class Product extends Resource
 
         // Tag::make('categories'),
         Tag::make('categories')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
+        Tag::make('tags')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
 
 
     ];

@@ -3,19 +3,21 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\{Gravatar, ID, Password, Text, };
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Illuminate\Validation\Rules;
 
-
-class Admin extends Resource
+class FormMessage extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Admin>
+     * @var class-string<\App\Models\FormMessage>
      */
-    public static $model = \App\Models\Admin::class;
+    public static $model = \App\Models\FormMessage::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -44,32 +46,13 @@ class Admin extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()->maxWidth(50),
+            BelongsTo::make('User', 'user', User::class),
 
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
+            Text::make('Name'),
+            Text::make('Phone'),
+            Textarea::make('Message'),
 
-                Text::make('UserName')
-                ->sortable()
-                ->rules('required', 'max:255'),
-                text::make('Phone Number')   ->rules('required', 'max:255')->sortable(),
-
-
-            Text::make('Email')
-            ->filterable()
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required',Rules\Password::defaults())
-                ->updateRules('nullable', Rules\Password::defaults()),
-
-
-
+            Boolean::make('Is Read')->default(false),
         ];
     }
 

@@ -32,7 +32,8 @@ class Coupon extends Model
      */
     protected $casts = [
         'limit_user' => 'integer',
-        'expiry_date' => 'date',
+        'start_date' => 'date',
+        'end_date' => 'date',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('offer_id');
             $table->unsignedBigInteger('product_id');
+            $table->char('product_count')->default(1);
             $table->timestamps();
 
             $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');

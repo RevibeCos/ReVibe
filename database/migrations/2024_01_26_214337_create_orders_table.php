@@ -15,20 +15,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('cart_id');
             $table->char('status',1);
-            $table->string('comment');
-            $table->char('payment_method',2);
-            $table->char('payment_status',2);
-            $table->char('delivery_method',2);
-            $table->string('delivery_pickup_interval');
-            $table->date('paid_at');
-            $table->date('shipped_at');
-            $table->date('complete_at');
+            $table->string('comment')->nullable();
+            $table->char('payment_method',2)->nullable();
+            $table->char('payment_status',2)->nullable();
+            $table->char('delivery_method',2)->nullable();
+            $table->string('delivery_pickup_interval')->nullable();
+            $table->date('paid_at')->nullable();
+            $table->date('shipped_at')->nullable();
+            $table->date('complete_at')->nullable();
             $table->string('number_of_packages')->nullable();
-
-
-
-
-
             $table->timestamps();
             $table->softDeletes();
 

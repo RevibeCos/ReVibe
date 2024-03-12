@@ -53,7 +53,8 @@ class Offer extends Resource
             ID::make()->sortable(),
             Text::make('Name'),
             Image::make('Image'),
-            Date::make('Expiry Date')->nullable(),
+            Date::make('Start Date'),
+            Date::make('End Date'),
             Text::make('Full Price'),
             Text::make('Website Price'),
             Number::make('Limit User')->nullable(),
@@ -61,7 +62,7 @@ class Offer extends Resource
             BelongsToMany::make(__('product'), 'products', product::class)
             ->searchable()
             ->showCreateRelationButton(),
-            Tag::make('products')->withPreview()->displayAsList()->showCreateRelationButton() ,
+            Tag::make('products')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
 
         ];
     }
