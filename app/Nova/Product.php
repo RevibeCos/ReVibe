@@ -52,10 +52,9 @@ class Product extends Resource
         Number ::make('Cost Price'),
         Number ::make('Full Price'),
 
-        Image::make('Image')->maxWidth(200),
-        Image::make(__('Hover Image'))->maxWidth(200),
+        Image::make('Image'),
+        Image::make(__('Hover Image')),
 
-        Image::make('Main image', 'main'),
         // Currency::make('Full Price')->currency('USD'),
 
         // Currency::make('Price')->currency('USD'),
@@ -65,16 +64,20 @@ class Product extends Resource
         Boolean::make('Is New'),
 
 
-        Number::make('Sort Order'),
 
         BelongsTo::make(__('company'), 'company', company::class)
-        ->searchable()
+
+        ->noPeeking()
         ->showCreateRelationButton(),
+
         BelongsToMany::make(__('categories'), 'categories', Category::class)
         ->searchable()
+
         ->showCreateRelationButton(),
+
         // Tag::make('categories'),
-        Tag::make('categories')->withPreview()->displayAsList()->showCreateRelationButton() ,
+        Tag::make('categories')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
+        Tag::make('tags')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
 
 
     ];

@@ -3,7 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\{BelongsTo, DateTime, ID, Text, Image, Number};
+use Laravel\Nova\Fields\{BelongsTo, DateTime, HasMany, ID, Text, Image, Number};
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaTranslatable\HandlesTranslatable;
 
@@ -58,6 +58,8 @@ class Category extends Resource
             ->rules('required'),
 
             BelongsTo::make('Parent', 'parent', Category::class)->nullable(),
+            HasMany::make('children', 'children', Category::class)->nullable(),
+
 
             DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
 

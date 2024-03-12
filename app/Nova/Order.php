@@ -3,17 +3,21 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\{ID, BelongsTo, BelongsToMany, Text, Number, DateTime, Currency, HasMany, MorphToMany, Tag};
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Resource;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Cart extends Resource
+class Order extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Cart>
+     * @var class-string<\App\Models\Order>
      */
-    public static $model = \App\Models\Cart::class;
+    public static $model = \App\Models\Order::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -41,47 +45,21 @@ class Cart extends Resource
     {
         return [
             ID::make()->sortable(),
-
-            BelongsTo::make('User', 'user', User::class)->searchable(),
-
-            Text::make('Session ID')->sortable(),
-
-            Text::make('Status')->sortable(),
-
-            Text::make('Price')->sortable(),
-
-            Number::make('Discount')->sortable(),
-
-            Text::make('Total Price')->sortable(),
-
-
-            Text::make('Delivery Cost')->sortable(),
-
-            // BelongsToMany::make(__('product'), 'products', product::class)
-            // ->searchable()
-            // ->showCreateRelationButton(),
-            // Tag::make('products')->modalSize('7xl')->withPreview()->displayAsList()->showCreateRelationButton()->preload() ->fields(function ($request, $relatedModel) {
-            //     return [
-            //         Text::make('Notes'),
-            //     ];
-            // }) ,
-            belongsToMany::make('products')
-            ->fields(function ($request, $relatedModel) {
-                return [
-                    Text::make('price'),
-                    Text::make('quantity'),
-                ];
-            }),
-
-
-            // BelongsTo::make('Coupon', 'coupon', Coupon::class)->nullable()->searchable(),
-
-            // DateTime::make('Created At')->format('YYYY-MM-DD HH:mm:ss')->sortable(),
-
-            // DateTime::make('Updated At')->format('YYYY-MM-DD HH:mm:ss')->sortable(),
+            BelongsTo::make('cart'),
+            Text::make('Status'),
+            Text::make('Comment')->nullable(),
+            Text::make('Payment Method')->nullable(),
+            Text::make('Payment Status')->nullable(),
+            Text::make('Delivery Method')->nullable(),
+            Text::make('Delivery Pickup Interval')->nullable(),
+            DateTime::make('Paid At')->nullable(),
+            DateTime::make('Shipped At')->nullable(),
+            DateTime::make('Complete At')->nullable(),
+            Text::make('Number of Packages')->nullable(),
+            DateTime::make('Created At')->sortable(),
+            DateTime::make('Updated At')->sortable(),
         ];
     }
-
 
     /**
      * Get the cards available for the request.

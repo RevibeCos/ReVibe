@@ -34,7 +34,8 @@ class Offer extends Model
      */
     protected $casts = [
         'item' => 'json',
-        'expiry_date' => 'date',
+        'start_date' => 'date',
+        'end_date' => 'date',
         'discount' => 'double',
         'limit_user' => 'integer',
         'created_at' => 'datetime',
@@ -49,4 +50,10 @@ class Offer extends Model
     protected $hidden = [
         'deleted_at',
     ];
+
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

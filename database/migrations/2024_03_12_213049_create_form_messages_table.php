@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('form_massages', function (Blueprint $table) {
+        Schema::create('form_messages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -22,7 +22,6 @@ return new class extends Migration
             $table->char('is_read', 1)->default('0');
             $table->softDeletes();
             $table->timestamps();
-
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('form_massages');
+        Schema::dropIfExists('form_messages');
     }
 };

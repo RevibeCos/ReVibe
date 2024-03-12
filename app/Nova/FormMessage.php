@@ -3,17 +3,21 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\{ID, BelongsTo, BelongsToMany, Text, Number, DateTime, Currency, HasMany, MorphToMany, Tag};
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Cart extends Resource
+class FormMessage extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Cart>
+     * @var class-string<\App\Models\FormMessage>
      */
-    public static $model = \App\Models\Cart::class;
+    public static $model = \App\Models\FormMessage::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -42,46 +46,15 @@ class Cart extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('User', 'user', User::class)->searchable(),
+            BelongsTo::make('User', 'user', User::class),
 
-            Text::make('Session ID')->sortable(),
+            Text::make('Name'),
+            Text::make('Phone'),
+            Textarea::make('Message'),
 
-            Text::make('Status')->sortable(),
-
-            Text::make('Price')->sortable(),
-
-            Number::make('Discount')->sortable(),
-
-            Text::make('Total Price')->sortable(),
-
-
-            Text::make('Delivery Cost')->sortable(),
-
-            // BelongsToMany::make(__('product'), 'products', product::class)
-            // ->searchable()
-            // ->showCreateRelationButton(),
-            // Tag::make('products')->modalSize('7xl')->withPreview()->displayAsList()->showCreateRelationButton()->preload() ->fields(function ($request, $relatedModel) {
-            //     return [
-            //         Text::make('Notes'),
-            //     ];
-            // }) ,
-            belongsToMany::make('products')
-            ->fields(function ($request, $relatedModel) {
-                return [
-                    Text::make('price'),
-                    Text::make('quantity'),
-                ];
-            }),
-
-
-            // BelongsTo::make('Coupon', 'coupon', Coupon::class)->nullable()->searchable(),
-
-            // DateTime::make('Created At')->format('YYYY-MM-DD HH:mm:ss')->sortable(),
-
-            // DateTime::make('Updated At')->format('YYYY-MM-DD HH:mm:ss')->sortable(),
+            Boolean::make('Is Read')->default(false),
         ];
     }
-
 
     /**
      * Get the cards available for the request.

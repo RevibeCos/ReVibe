@@ -53,6 +53,8 @@ class Admin extends Resource
                 Text::make('UserName')
                 ->sortable()
                 ->rules('required', 'max:255'),
+                text::make('Phone Number')   ->rules('required', 'max:255')->sortable(),
+
 
             Text::make('Email')
             ->filterable()

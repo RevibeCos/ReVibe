@@ -20,15 +20,14 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('image');
             $table->string('hover_image')->nullable();
-            $table->json('images')->nullable();
             $table->string('cost_price');
             $table->string('full_price');
             $table->string('website_price');
             $table->double('discount')->nullable();
             $table->char('is_new',1)->default(1);
             $table->char('is_sail',1)->default(0);
-            $table->char('is_instagram',0)->default(0);
-            $table->integer('sort_order');
+            $table->char('in_home',1)->default(0);
+            $table->char('is_instagram',1)->default(0);
             $table->timestamps();
             $table->softDeletes();
 
