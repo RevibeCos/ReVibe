@@ -17,8 +17,8 @@ return new class extends Migration
             $table->integer('limit_user')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-            $table->timestamps('start_date');
-            $table->timestamps('end_date');
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
             $table->char('is_active', 1);
             $table->char('discount_type', 1);
             $table->string('discount')->default(0.0)->nullable();

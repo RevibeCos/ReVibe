@@ -29,6 +29,11 @@ class Order extends Model
         'number_of_packages',
     ];
 
+    protected $dates = [
+        'paid_at',
+        'shipped_at',
+        'complete_at',
+    ];
     /**
      * The attributes that should be cast.
      *
@@ -47,9 +52,6 @@ class Order extends Model
      *
      * @var array
      */
-    protected $hidden = [
-        'deleted_at',
-    ];
 
     /**
      * Get the cart associated with the order.

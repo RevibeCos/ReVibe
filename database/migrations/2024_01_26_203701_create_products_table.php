@@ -27,7 +27,7 @@ return new class extends Migration
             $table->char('is_new',1)->default(1);
             $table->char('is_sail',1)->default(0);
             $table->char('in_home',1)->default(0);
-            $table->char('is_instagram',0)->default(0);
+            $table->char('is_instagram',1)->default(0);
             $table->timestamps();
             $table->softDeletes();
 
