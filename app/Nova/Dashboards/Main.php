@@ -4,6 +4,7 @@ namespace App\Nova\Dashboards;
 
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Dashboards\Main as Dashboard;
+use Revibe\Main\Main as MainMain;
 
 class Main extends Dashboard
 {
@@ -15,7 +16,9 @@ class Main extends Dashboard
     public function cards()
     {
         return [
-            new Help,
+            // new Help,
+            new MainMain(),
+
         ];
     }
 }

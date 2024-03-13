@@ -5,10 +5,16 @@ namespace App\Helpers;
 use App\Nova\Admin;
 use App\Nova\Cart;
 use App\Nova\Category;
+use App\Nova\City;
 use App\Nova\Company;
+use App\Nova\Coupon;
 use App\Nova\Dashboards\Main;
 use App\Nova\Favorite;
+use App\Nova\FormMessage;
+use App\Nova\Offer;
+use App\Nova\Order;
 use App\Nova\Product;
+use App\Nova\Tag;
 use App\Nova\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
@@ -20,33 +26,54 @@ use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Outl1ne\NovaSettings\NovaSettings;
 
-class Settings {
-    public static function init() {
+class Settings
+{
+    public static function init()
+    {
 
         Nova::withBreadcrumbs();
         Nova::footer(function ($request) {
             return Blade::render('');
         });
 
-        // Nova::mainMenu(function (Request $request) {
-        //     return [
-        //         MenuSection::dashboard(Main::class)->icon('chart-bar'),
+        Nova::mainMenu(function (Request $request) {
+            return [
+                MenuSection::dashboard(Main::class)->icon('chart-bar'),
 
 
-        //         MenuSection::make('Customers', [
-        //             MenuItem::externalLink('Task Manger', 'https://task-manger.sadeemlanding.com/')->openInNewTab(),
+                MenuSection::make('Admin', [
+                    MenuItem::externalLink('Task Manger', 'https://task-manger.sadeemlanding.com/')->openInNewTab(),
+                    MenuItem::resource(Admin::class),
+                ])->icon('user')->collapsable(),
 
-        //             MenuItem::resource(Admin::class),
-        //             MenuItem::resource(User::class),
-        //             MenuItem::resource(Company::class),
-        //             MenuItem::resource(Category::class),
-        //             MenuItem::resource(Product::class),
+                MenuSection::make('products', [
+                    MenuItem::resource(Company::class),
+                    MenuItem::resource(Category::class),
+                    MenuItem::resource(Tag::class),
+                    MenuItem::resource(Product::class),
+                    MenuItem::resource(Offer::class),
 
-        //         ])->icon('user')->collapsable(),
+                ])->icon('view-grid')->collapsable(),
 
 
-        //     ];
-        // });
+                MenuSection::make('Customers', [
+                    MenuItem::resource(User::class),
+                    MenuItem::resource(City::class),
+                    MenuItem::resource(FormMessage::class),
+
+
+                ])->icon('user-group')->collapsable(),
+
+                MenuSection::make('Order', [
+                    MenuItem::resource(Cart::class),
+                    MenuItem::resource(Order::class),
+                    MenuItem::resource(Coupon::class),
+
+                ])->icon('clipboard-check')->collapsable(),
+
+
+            ];
+        });
 
         NovaSettings::addSettingsFields([
             Text::make('Some setting', 'some_setting'),
@@ -57,10 +84,9 @@ class Settings {
             Text::make('Some setting', 'some_setting'),
             Number::make('A number', 'a_number'),
         ], [], 'Subpage');
-           // Nova::enableRTL();
+        // Nova::enableRTL();
 
         // Nova::enableRTL(fn (Request $request) => $request->user()->wantsRTL());
 
     }
-
 }
