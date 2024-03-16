@@ -20,8 +20,9 @@ use Laravel\Nova\Notifications\NovaNotification;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/test', function () {
-    $user=User::find(2);
+    $user = User::find(2);
     $user->notify(new NovaNotification());
 });
 
@@ -44,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 Route::get('/Add_to_cart', [CartController::class, 'add']);
@@ -54,11 +55,6 @@ Route::get('/content_cart', [CartController::class, 'content']);
 
 
 
-    Route::resource('products', ProductController::class);
+Route::resource('products', ProductController::class);
 
-    Route::resource('companies', CompanyController::class);
-
-
-
-
-
+Route::resource('companies', CompanyController::class);
