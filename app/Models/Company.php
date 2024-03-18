@@ -25,4 +25,8 @@ class Company extends Model
     protected $hidden = [
         'deleted_at',
     ];
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

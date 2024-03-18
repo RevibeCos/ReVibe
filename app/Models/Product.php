@@ -74,4 +74,37 @@ class Product extends Model
     {
         return $this->belongsToMany(Tag::class, 'product_tags');
     }
+    public function rates()
+    {
+        return $this->hasMany(ProductRate::class);
+    }
+    public function averageRating()
+    {
+        return $this->rates()->avg('rating');
+    }
+    public function getRelatedProducts($limit = 5)
+    {
+
+        return Product::where('company_id', $this->company_id)
+            ->where('id', '!=', $this->id) // Exclude the current product
+            ->limit($limit) // Limit the number of related products to 5
+            ->get();
+    }
+
+    public function getNewestProducts($limit = 5)
+    {
+        return $this->orderBy('created_at', 'desc')->limit($limit)->get();
+    }
+
+    public function getTopSellerProducts($limit = 5)
+    {
+        // Assuming you have a field indicating sales count, adjust the field name accordingly
+        // return $this->orderBy('sales_count', 'desc')->limit($limit)->get();
+    }
+
+    public function getSpecialProducts($limit = 5)
+    {
+        // Assuming you have a field indicating special status, adjust the field name accordingly
+        // return $this->where('is_special', true)->limit($limit)->get();
+    }
 }

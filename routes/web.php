@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Website\CartController;
+use App\Http\Controllers\Website\CompanyController;
+use App\Http\Controllers\Website\HomeController;
+use App\Http\Controllers\Website\ProductController;
 use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -18,22 +21,18 @@ use Laravel\Nova\Notifications\NovaNotification;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/test', function () {
-    $user=User::find(2);
+    $user = User::find(2);
     $user->notify(new NovaNotification());
 });
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [HomeController::class, 'home'])->name('profile.edit');
+
+
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard22');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -42,15 +41,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
-Route::get('/Addtocart', [CartController::class, 'add']);
-Route::get('/removetocart', [CartController::class, 'remove']);
-Route::get('/totalcart', [CartController::class, 'total']);
-Route::get('/contentcart', [CartController::class, 'content']);
-
-
+Route::get('/Add_to_cart', [CartController::class, 'add']);
+Route::get('/remove_to_cart', [CartController::class, 'remove']);
+Route::get('/total_cart', [CartController::class, 'total']);
+Route::get('/content_cart', [CartController::class, 'content']);
 
 
 
+Route::resource('products', ProductController::class);
+
+Route::resource('companies', CompanyController::class);

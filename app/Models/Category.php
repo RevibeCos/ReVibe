@@ -9,9 +9,9 @@ use Spatie\Translatable\HasTranslations;
 
 class Category extends Model
 {
-    use HasFactory, SoftDeletes,HasTranslations;
+    use HasFactory, SoftDeletes, HasTranslations;
 
-    public $translatable = ['name','description'];
+    public $translatable = ['name', 'description'];
 
     protected $fillable = [
         'name', 'description', 'image', 'parent_id'
@@ -19,12 +19,21 @@ class Category extends Model
 
     protected $dates = ['deleted_at'];
 
+
+    public static function getParentCategories()
+    {
+        return self::where('parent_id', null)->get();
+    }
+    public static function getSupCategories()
+    {
+        return self::whereHas('parent', function ($query) {
+            $query->whereNull('parent_id');
+        })->get();
+    }
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
-
-
 
 
     public function children()
