@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Website\CartController;
 use App\Http\Controllers\Website\CompanyController;
+use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\ProductController;
 use App\Models\User;
 use Illuminate\Foundation\Application;
@@ -26,14 +27,9 @@ Route::get('/test', function () {
     $user->notify(new NovaNotification());
 });
 
-Route::get('/', function () {
-    return Inertia::render('product', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [HomeController::class, 'home'])->name('profile.edit');
+
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard22');

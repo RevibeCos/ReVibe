@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
@@ -71,19 +72,37 @@ class Settings
 
                 ])->icon('clipboard-check')->collapsable(),
 
+                MenuSection::make('Setting', [
+                    MenuItem::link('Header', '/nova-settings/header'),
+                    MenuItem::link('Footer', '/nova-settings/footer'),
+                    MenuItem::link('Our Story', '/nova-settings/our-story'),
+
+                ])->icon('user')->collapsable()
+
 
             ];
         });
 
         NovaSettings::addSettingsFields([
-            Text::make('Some setting', 'some_setting'),
-            Number::make('A number', 'a_number'),
-        ], [], 'General');
-
+            Image::make('Our Mission Image', 'our_mission_image'),
+            Number::make('Our Mission Text', 'our_mission_text'),
+            Image::make('Our vision Image', 'our_vision_image'),
+            Number::make('Our vision Text', 'our_vision_text'),
+        ], [], 'Our Story');
         NovaSettings::addSettingsFields([
-            Text::make('Some setting', 'some_setting'),
-            Number::make('A number', 'a_number'),
-        ], [], 'Subpage');
+            Image::make('Our Mission Image', 'our_mission_image'),
+            Number::make('Our Mission Text', 'our_mission_text'),
+            Image::make('Our vision Image', 'our_vision_image'),
+            Number::make('Our vision Text', 'our_vision_text'),
+        ], [], 'Header');
+        NovaSettings::addSettingsFields([
+            Image::make('Our Mission Image', 'our_mission_image'),
+            Number::make('Our Mission Text', 'our_mission_text'),
+            Image::make('Our vision Image', 'our_vision_image'),
+            Number::make('Our vision Text', 'our_vision_text'),
+        ], [], 'Footer');
+
+
         // Nova::enableRTL();
 
         // Nova::enableRTL(fn (Request $request) => $request->user()->wantsRTL());
