@@ -52,7 +52,7 @@ class Company extends Resource
             Text::make('Description','description')
             ->translatable(),
 
-            Image::make('Image')->disk('public'),
+            Image::make('Image')->disk('Company'),
 
 
             DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
