@@ -50,7 +50,6 @@ class Company extends Resource
             ->rules('required', 'min:2'),
 
             Text::make('Description','description')
-            ->rules('required', 'min:2')
             ->translatable(),
 
             Image::make('Image')->disk('public'),
