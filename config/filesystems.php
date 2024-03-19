@@ -50,7 +50,7 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
-        'Company' => [
+        'Category' => [
             'driver' => 'local',
             'root' => storage_path('app/public/Image/Category'),
             'url' => env('APP_URL').'/storage/Image/Category',
