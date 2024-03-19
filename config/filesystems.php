@@ -50,7 +50,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
-
+        'Company' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/Image/Category'),
+            'url' => env('APP_URL').'/storage/Image/Category',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
