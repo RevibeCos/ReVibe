@@ -55,6 +55,7 @@ class Category extends Resource
             ->translatable(),
 
             Image::make('Image')
+            ->disk('Category')
             ->rules('required'),
 
             BelongsTo::make('Parent', 'parent', Category::class)->nullable(),

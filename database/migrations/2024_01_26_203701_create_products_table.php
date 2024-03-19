@@ -17,7 +17,7 @@ return new class extends Migration
             // way use
             $table->string('name');
             $table->unsignedBigInteger('company_id');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->json('how_to_use')->nullable();
             $table->string('image');
             $table->string('hover_image')->nullable();
