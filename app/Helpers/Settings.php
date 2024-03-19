@@ -77,7 +77,7 @@ class Settings
                     MenuItem::link('Footer', '/nova-settings/footer'),
                     MenuItem::link('Our Story', '/nova-settings/our-story'),
 
-                ])->icon('user')->collapsable()
+                ])->icon('cog')->collapsable()
 
 
             ];

@@ -1,8 +1,7 @@
-<template>
-    <Card class="w-f flex flex-col items-center justify-center">
+<template >
+    <Card  style="background-color: rgba(var(--colors-gray-900)) ;" class="flex flex-col items-center justify-center">
       <div class="px-3 py-3">
-        <!-- Image placeholders -->
-        <img :src="getImageUrl('logo.png')" alt="Image 1">
+        <img style="height: 450px;" :src="getImageUrl('logo.png')" alt="Image 1">
       </div>
     </Card>
   </template>
