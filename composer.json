@@ -48,7 +48,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helper/system.php"
+            "app/Helpers/system.php"
         ]
     },
     "autoload-dev": {
