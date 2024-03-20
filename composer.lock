@@ -5251,7 +5251,7 @@
         },
         {
             "name": "revibe/main",
-            "version": "dev-Zeyad_",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Main",
@@ -10738,5 +10738,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
