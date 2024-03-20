@@ -10,11 +10,7 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = [
         'name',
         'company_id',
@@ -28,29 +24,18 @@ class Product extends Model
         'sort_order',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
+
     protected $casts = [
         'discount' => 'double',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
+
     protected $hidden = [
         'deleted_at',
     ];
 
-    /**
-     * Get the company that owns the product.
-     */
     public function company()
     {
         return $this->belongsTo(Company::class);
@@ -58,30 +43,42 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'category_product');
     }
+
     public function offers()
     {
         return $this->hasMany(Offer::class);
     }
+
     public function carts()
     {
-        return $this->belongsToMany(Cart::class)
+        return $this->belongsToMany(Cart::class, 'cart_product')
             ->withPivot('quantity', 'price')
             ->withTimestamps();
     }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'product_tags');
     }
+
     public function rates()
     {
         return $this->hasMany(ProductRate::class);
     }
+
     public function averageRating()
     {
         return $this->rates()->avg('rating');
     }
+
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class, );
+    }
+
+    //no need for this function in model
     public function getRelatedProducts($limit = 5)
     {
 
@@ -91,6 +88,7 @@ class Product extends Model
             ->get();
     }
 
+    //no need for this function in model
     public function getNewestProducts($limit = 5)
     {
         return $this->orderBy('created_at', 'desc')->limit($limit)->get();
@@ -98,13 +96,14 @@ class Product extends Model
 
     public function getTopSellerProducts($limit = 5)
     {
+        return $this->orderBy('created_at', 'desc')->limit($limit)->get();
         // Assuming you have a field indicating sales count, adjust the field name accordingly
         // return $this->orderBy('sales_count', 'desc')->limit($limit)->get();
     }
 
     public function getSpecialProducts($limit = 5)
     {
-        // Assuming you have a field indicating special status, adjust the field name accordingly
+        return $this->orderBy('created_at', 'desc')->limit($limit)->get();
         // return $this->where('is_special', true)->limit($limit)->get();
     }
 }

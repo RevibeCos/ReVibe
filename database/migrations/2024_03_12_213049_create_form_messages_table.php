@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('phone');
             $table->longText('message');
             $table->char('is_read', 1)->default('0');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

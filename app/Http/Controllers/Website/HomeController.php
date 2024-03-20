@@ -22,22 +22,34 @@ class HomeController extends Controller
             'icon' => 'fas fa-user-tie',
             // 'links' => $links,
             // 'data'=>$products
-            'categories'=> Category::getParentCategories(),
-            'supCategories'=> Category::getSupCategories(),
-            'offers'=>Offer::latest()->take(2)->get(),
-            'specialProducts'=>Product::getSpecialProducts(),
-            'topSellerProducts'=>Product::getTopSellerProducts(),
-            'newestProducts'=> Product::getNewestProducts(),
-            'Companies'=>Company::all(),
+            'categories' => Category::getParentCategories(),
+            'supCategories' => Category::getSupCategories(),
+            'offers' => Offer::latest()->take(2)->get(),
+            // 'specialProducts' => Product::getSpecialProducts(),
+            // 'topSellerProducts' => Product::getTopSellerProducts(),
+            // 'newestProducts' => Product::getNewestProducts(),
+            'Companies' => Company::all(),
 
-           ];
+        ];
 
     }
 
     public function dashboard()
     {
+        $data = [
+            'page_title' => 'products List',
+            'icon' => 'fas fa-user-tie',
+            // 'links' => $links,
+            // 'data'=>$products
+            'categories' => Category::getParentCategories(),
+            'supCategories' => Category::getSupCategories(),
+            'offers' => Offer::latest()->take(2)->get(),
+            'specialProducts' => Product::getSpecialProducts(),
+            'topSellerProducts' => Product::getTopSellerProducts(),
+            'newestProducts' => Product::getNewestProducts(),
+            'Companies' => Company::all(),
 
-
-        return Inertia::render('Dashboard');
+        ];
+        return Inertia::render('Dashboard', $data);
     }
 }
