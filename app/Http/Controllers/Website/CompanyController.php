@@ -24,72 +24,52 @@ class CompanyController extends Controller
             'page_title' => 'companies List',
             'icon' => 'fas fa-user-tie',
             'links' => $links,
-            'data'=>$companies
-           ];
+            'companies' => $companies
+        ];
 
-           return Inertia::render('product', compact('data') );
+        return Inertia::render('company', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Company $company)
     {
-
-
-
-
         $links = [
             '#' => 'company',
             route('companies.index') => 'company List',
-            route('companies.show', ['company' => $company->id])=> $company->name,
+            route('companies.show', $company->id) => $company->name,
 
         ];
         $data = [
-            'page_title' =>  $company->name,
+            'page_title' => $company->name,
             'icon' => 'fas fa-user-tie',
             'links' => $links,
-            'data'=>$company,
-            'products'=>$company->products,
-           ];
-           return Inertia::render('product', compact('data') );
+            'data' => $company,
+            'products' => $company->products,
+        ];
+        return Inertia::render('product', compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Company $company)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, Company $company)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Company $company)
     {
         //

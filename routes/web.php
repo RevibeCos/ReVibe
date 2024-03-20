@@ -30,7 +30,6 @@ Route::get('/test', function () {
 Route::get('/', [HomeController::class, 'home'])->name('profile.edit');
 
 
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard22');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,6 +38,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //you can use
+//    Route::resource('profile',ProfileController::class)->only('edit','update','destroy');
 });
 
 require __DIR__ . '/auth.php';
@@ -48,7 +50,6 @@ Route::get('/Add_to_cart', [CartController::class, 'add']);
 Route::get('/remove_to_cart', [CartController::class, 'remove']);
 Route::get('/total_cart', [CartController::class, 'total']);
 Route::get('/content_cart', [CartController::class, 'content']);
-
 
 
 Route::resource('products', ProductController::class);
