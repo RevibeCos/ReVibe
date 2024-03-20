@@ -25,9 +25,9 @@ class HomeController extends Controller
             'categories' => Category::getParentCategories(),
             'supCategories' => Category::getSupCategories(),
             'offers' => Offer::latest()->take(2)->get(),
-            'specialProducts' => Product::getSpecialProducts(),
-            'topSellerProducts' => Product::getTopSellerProducts(),
-            'newestProducts' => Product::getNewestProducts(),
+            // 'specialProducts' => Product::getSpecialProducts(),
+            // 'topSellerProducts' => Product::getTopSellerProducts(),
+            // 'newestProducts' => Product::getNewestProducts(),
             'Companies' => Company::all(),
 
         ];

@@ -73,6 +73,11 @@ class Product extends Model
         return $this->rates()->avg('rating');
     }
 
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class, );
+    }
+
     //no need for this function in model
     public function getRelatedProducts($limit = 5)
     {
@@ -91,13 +96,14 @@ class Product extends Model
 
     public function getTopSellerProducts($limit = 5)
     {
+        return $this->orderBy('created_at', 'desc')->limit($limit)->get();
         // Assuming you have a field indicating sales count, adjust the field name accordingly
         // return $this->orderBy('sales_count', 'desc')->limit($limit)->get();
     }
 
     public function getSpecialProducts($limit = 5)
     {
-        // Assuming you have a field indicating special status, adjust the field name accordingly
+        return $this->orderBy('created_at', 'desc')->limit($limit)->get();
         // return $this->where('is_special', true)->limit($limit)->get();
     }
 }
