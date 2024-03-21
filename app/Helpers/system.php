@@ -208,4 +208,14 @@ function carCode($code)
     } else {
         return json_decode($response, true);
     }
+
+    function generateDiskConfig($folder) {
+        return [
+            'driver' => 'local',
+            'root' => storage_path("app/public/Image/{$folder}"),
+            'url' => env('APP_URL')."/storage/Image/{$folder}",
+            'visibility' => 'public',
+            'throw' => false,
+        ];
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Nova\Admin;
+use App\Nova\Attribute;
 use App\Nova\Cart;
 use App\Nova\Category;
 use App\Nova\City;
@@ -51,6 +52,7 @@ class Settings
                     MenuItem::resource(Company::class),
                     MenuItem::resource(Category::class),
                     MenuItem::resource(Tag::class),
+                    MenuItem::resource(Attribute::class),
                     MenuItem::resource(Product::class),
                     MenuItem::resource(Offer::class),
 
