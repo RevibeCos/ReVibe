@@ -78,21 +78,7 @@ class Product extends Model
         return $this->belongsToMany(Attribute::class, );
     }
 
-    //no need for this function in model
-    public function getRelatedProducts($limit = 5)
-    {
 
-        return Product::where('company_id', $this->company_id)
-            ->where('id', '!=', $this->id) // Exclude the current product
-            ->limit($limit) // Limit the number of related products to 5
-            ->get();
-    }
-
-    //no need for this function in model
-    public function getNewestProducts($limit = 5)
-    {
-        return $this->orderBy('created_at', 'desc')->limit($limit)->get();
-    }
 
     public function getTopSellerProducts($limit = 5)
     {

@@ -39,24 +39,15 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
-        'Company' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/Image/Company'),
-            'url' => env('APP_URL').'/storage/Image/Company',
-            'visibility' => 'public',
-            'throw' => false,
-        ],
-        'Category' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/Image/Category'),
-            'url' => env('APP_URL').'/storage/Image/Category',
-            'visibility' => 'public',
-            'throw' => false,
-        ],
+        'Company' => generateDiskConfig('Company'),
+
+        'Category' => generateDiskConfig('Category'),
+
+        'Attribute' => generateDiskConfig('Attribute'),
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -70,6 +61,8 @@ return [
         ],
 
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------
