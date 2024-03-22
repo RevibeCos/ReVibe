@@ -56,6 +56,7 @@ class Settings
                     MenuItem::resource(Product::class),
                     MenuItem::resource(Offer::class),
 
+
                 ])->icon('view-grid')->collapsable(),
 
 
