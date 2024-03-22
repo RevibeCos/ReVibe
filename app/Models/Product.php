@@ -43,8 +43,14 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_product');
+        return $this->belongsToMany(Category::class,'product_categories');
     }
+
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class,'product_attributes');
+    }
+
 
     public function offers()
     {
@@ -73,10 +79,6 @@ class Product extends Model
         return $this->rates()->avg('rating');
     }
 
-    public function attributes()
-    {
-        return $this->belongsToMany(Attribute::class, );
-    }
 
 
 
