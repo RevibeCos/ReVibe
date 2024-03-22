@@ -23,8 +23,16 @@ use Laravel\Nova\Notifications\NovaNotification;
 */
 
 
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
-Route::get('/', [HomeController::class, 'home'])->name('profile.edit');
+// Route::get('/', [HomeController::class, 'home'])->name('profile.edit');
 
 
 Route::get('/dashboard', function () {
