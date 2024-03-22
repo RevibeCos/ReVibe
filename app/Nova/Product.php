@@ -75,8 +75,15 @@ class Product extends Resource
 
         ->showCreateRelationButton(),
 
+        BelongsToMany::make(__('attributes'), 'attributes', attribute::class)
+        ->searchable()
+
+        ->showCreateRelationButton(),
+
         // Tag::make('categories'),
         Tag::make('categories')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
+        Tag::make('attributes')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
+
         Tag::make('tags')->preload()->withPreview()->displayAsList()->showCreateRelationButton() ,
 
 
