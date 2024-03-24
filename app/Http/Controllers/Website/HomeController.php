@@ -18,19 +18,20 @@ class HomeController extends Controller
     {
 
         $data = [
-            'page_title' => 'products List',
+            'page_title' => 'Home',
             'icon' => 'fas fa-user-tie',
-            // 'links' => $links,
-            // 'data'=>$products
             'categories' => Category::getParentCategories(),
             'supCategories' => Category::getSupCategories(),
             'offers' => Offer::latest()->take(2)->get(),
-            // 'specialProducts' => Product::getSpecialProducts(),
-            // 'topSellerProducts' => Product::getTopSellerProducts(),
-            // 'newestProducts' => Product::getNewestProducts(),
-            'Companies' => Company::all(),
+            'specialProducts' => Product::all(),
+            'topSellerProducts' => Product::all(),
+            'newestProducts' => Product::all(),
+            'Companies' => Company::all(),\
+            
 
         ];
+        return Inertia::render('Home', $data);
+
 
     }
 
