@@ -26,8 +26,8 @@ class HomeController extends Controller
             'specialProducts' => Product::all(),
             'topSellerProducts' => Product::all(),
             'newestProducts' => Product::all(),
-            'Companies' => Company::all(),\
-            
+            'Companies' => Company::all(),
+
 
         ];
         return Inertia::render('Home', $data);
