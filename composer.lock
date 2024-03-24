@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6567d8d52a77845f486d29567b028f4",
+    "content-hash": "af4aa3b944b6bf4dd4d875181474c5a3",
     "packages": [
         {
             "name": "brick/math",
@@ -969,6 +969,67 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "eminiarts/nova-tabs",
+            "version": "2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eminiarts/nova-tabs.git",
+                "reference": "c9091cf6e8646dfb07cae5dd7fa7ba718f6e1433"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eminiarts/nova-tabs/zipball/c9091cf6e8646dfb07cae5dd7fa7ba718f6e1433",
+                "reference": "c9091cf6e8646dfb07cae5dd7fa7ba718f6e1433",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/nova": "^4.12",
+                "nova-kit/nova-packages-tool": "^1.3",
+                "php": "^7.4|^8"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2",
+                "orchestra/testbench": "^6",
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Eminiarts\\Tabs\\TabsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eminiarts\\Tabs\\": "src/",
+                    "Eminiarts\\Tabs\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emini Arts GmbH",
+                    "email": "support@eminiarts.ch",
+                    "homepage": "https://eminiarts.ch"
+                }
+            ],
+            "description": "Laravel Nova - Tabs.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/eminiarts/nova-tabs/issues",
+                "source": "https://github.com/eminiarts/nova-tabs/tree/2.2.3"
+            },
+            "time": "2022-10-25T19:58:02+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -8227,6 +8288,77 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "whitecube/nova-flexible-content",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whitecube/nova-flexible-content.git",
+                "reference": "e28bd3dfc8ae7c5e83f6397128017d327a1465f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whitecube/nova-flexible-content/zipball/e28bd3dfc8ae7c5e83f6397128017d327a1465f5",
+                "reference": "e28bd3dfc8ae7c5e83f6397128017d327a1465f5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^8.0|^9.0|^10.0|^11.0",
+                "laravel/nova": "^4.0",
+                "nova-kit/nova-packages-tool": "^1.3.1",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.2",
+                "phpunit/phpunit": "^9.5",
+                "psalm/plugin-laravel": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Whitecube\\NovaFlexibleContent\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whitecube\\NovaFlexibleContent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Toon Van den Bos",
+                    "email": "toon@whitecube.be"
+                }
+            ],
+            "description": "Flexible Content & Repeater Fields for Laravel Nova.",
+            "keywords": [
+                "Flexible",
+                "field",
+                "group",
+                "laravel",
+                "layout",
+                "nova",
+                "repeat"
+            ],
+            "support": {
+                "issues": "https://github.com/whitecube/nova-flexible-content/issues",
+                "source": "https://github.com/whitecube/nova-flexible-content/tree/v1.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/whitecube",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-13T13:23:57+00:00"
         }
     ],
     "packages-dev": [

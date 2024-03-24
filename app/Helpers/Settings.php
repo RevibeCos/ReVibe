@@ -27,6 +27,9 @@ use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Outl1ne\NovaSettings\NovaSettings;
+use Whitecube\NovaFlexibleContent\Flexible;
+use Eminiarts\Tabs\Tabs;
+
 
 class Settings
 {
@@ -76,9 +79,11 @@ class Settings
                 ])->icon('clipboard-check')->collapsable(),
 
                 MenuSection::make('Setting', [
-                    MenuItem::link('Header', '/nova-settings/header'),
-                    MenuItem::link('Footer', '/nova-settings/footer'),
-                    MenuItem::link('Our Story', '/nova-settings/our-story'),
+                    MenuItem::link('Setting', '/nova-settings/setting'),
+
+                    // MenuItem::link('Header', '/nova-settings/header'),
+                    // MenuItem::link('Footer', '/nova-settings/footer'),
+                    // MenuItem::link('Our Story', '/nova-settings/our-story'),
 
                 ])->icon('cog')->collapsable()
 
@@ -87,23 +92,45 @@ class Settings
         });
 
         NovaSettings::addSettingsFields([
-            Image::make('Our Mission Image', 'our_mission_image'),
-            Number::make('Our Mission Text', 'our_mission_text'),
-            Image::make('Our vision Image', 'our_vision_image'),
-            Number::make('Our vision Text', 'our_vision_text'),
-        ], [], 'Our Story');
-        NovaSettings::addSettingsFields([
-            Image::make('Our Mission Image', 'our_mission_image'),
-            Number::make('Our Mission Text', 'our_mission_text'),
-            Image::make('Our vision Image', 'our_vision_image'),
-            Number::make('Our vision Text', 'our_vision_text'),
-        ], [], 'Header');
-        NovaSettings::addSettingsFields([
-            Image::make('Our Mission Image', 'our_mission_image'),
-            Number::make('Our Mission Text', 'our_mission_text'),
-            Image::make('Our vision Image', 'our_vision_image'),
-            Number::make('Our vision Text', 'our_vision_text'),
-        ], [], 'Footer');
+            new Tabs(
+                __('Tabs'),
+                [
+
+                    __('header') => [
+                        Image::make('Logo', 'logo'),
+
+                        Flexible::make('Nav item')
+                            ->addLayout('Add Item', 'item', [
+                                Text::make('Title'),
+                                Text::make('Link'),
+                                
+                                Image::make('Logo', 'logo'),
+
+                            ])->button('Add Item'),
+
+
+
+                    ],   __('Footer') => [
+                        Image::make('image', 'image'),
+
+                        Text::make('Text', 'text_footer'),
+                        Text::make('Sup Text', 'sup_text_footer')->placeholder('Ramat aviv c, TLV'),
+
+
+
+                    ] , __('Social media') => [
+                        Text::make('Facebook', 'facebook')->placeholder('https://facebook.com/USERNAME'),
+                        Text::make('Instagram', 'instagram')->placeholder('https://instagram.com/USERNAME'),
+                        Text::make('Whatsapp', 'whatsapp')->placeholder('+972521234567'),
+                        Text::make('Email', 'email')->placeholder('Ramat aviv c, TLV'),
+
+
+                    ] ,
+                ]
+            ),
+
+        ], [], 'Setting');
+
 
 
         // Nova::enableRTL();
