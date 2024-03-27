@@ -16,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
             $locale = config('app.locale');
+            $view->with([
+                'locale' => $locale,
+            ]);
         });
         View::composer('*', function ($view) {
             $logo = nova_get_setting('logo');
