@@ -11,8 +11,8 @@ import {
 } from "@/shadcn/ui/card";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-import { useReactTable } from "@tanstack/react-table";
 import { ThemeSelector } from "@/Components/header/partials/theme-selector";
+import { Button } from "@/shadcn";
 
 enum GenderEnum {
     female = "female",
@@ -53,10 +53,12 @@ export default function Welcome({
     return (
         <>
             <Head title="Welcome" />
-            <Badge className="mb-2" variant="outline">
-                xxxx
-            </Badge>
-
+            <div className="flex flex-row mt-16 mx-16 gap-x-6 ">
+                <ThemeSelector />
+                <Badge className="mb-2" variant="outline">
+                    Badge
+                </Badge>
+            </div>
             <Card className="w-[30%] mx-auto">
                 <CardHeader>
                     <CardTitle>Card Title</CardTitle>
@@ -69,8 +71,14 @@ export default function Welcome({
                     <p>Card Footer</p>
                 </CardFooter>
             </Card>
-
-            <ThemeSelector />
+            <div className="flex flex-col gap-y-8 mx-auto max-w-[150px] mt-4">
+                <Button variant="ghost">ghost</Button>
+                <Button variant="destructive">destructive</Button>
+                <Button variant="default">default</Button>
+                <Button variant="link">link</Button>
+                <Button variant="outline">outline</Button>
+                <Button variant="secondary">secondary</Button>
+            </div>
 
             {/* <form onSubmit={handleSubmit(onSubmit)}>
                 <label>First Name</label>
