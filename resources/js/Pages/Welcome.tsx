@@ -9,6 +9,25 @@ import {
     CardHeader,
     CardTitle,
 } from "@/shadcn/ui/card";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+enum GenderEnum {
+    female = "female",
+    male = "male",
+    other = "other",
+}
+
+interface IFormInput {
+    firstName: string;
+    gender: GenderEnum;
+}
+
+interface IFormInput {
+    firstName: string
+    lastName: string
+    age: number
+  }
+
 
 export default function Welcome({
     auth,
@@ -25,6 +44,9 @@ export default function Welcome({
             ?.classList.add("!flex-row");
         document.getElementById("background")?.classList.add("!hidden");
     };
+
+    const { register, handleSubmit } = useForm<IFormInput>()
+    const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
 
     return (
         <>
@@ -45,6 +67,19 @@ export default function Welcome({
                     <p>Card Footer</p>
                 </CardFooter>
             </Card>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <label>First Name</label>
+                <input {...register("firstName")} />
+                <label>Gender Selection</label>
+                <select {...register("gender")}>
+                    <option value="female">female</option>
+                    <option value="male">male</option>
+                    <option value="other">other</option>
+                </select>
+                <input type="submit" />
+            </form>
+
             {/* <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
                 <img id="background" className="absolute -left-20 top-0 max-w-[877px]" src="https://laravel.com/assets/img/welcome/background.svg" />
                 <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
