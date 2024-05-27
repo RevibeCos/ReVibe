@@ -11,6 +11,9 @@ import {
 } from "@/shadcn/ui/card";
 import { useForm, SubmitHandler } from "react-hook-form";
 
+import { useReactTable } from "@tanstack/react-table";
+import { ThemeSelector } from "@/Components/header/partials/theme-selector";
+
 enum GenderEnum {
     female = "female",
     male = "male",
@@ -23,11 +26,10 @@ interface IFormInput {
 }
 
 interface IFormInput {
-    firstName: string
-    lastName: string
-    age: number
-  }
-
+    firstName: string;
+    lastName: string;
+    age: number;
+}
 
 export default function Welcome({
     auth,
@@ -45,8 +47,8 @@ export default function Welcome({
         document.getElementById("background")?.classList.add("!hidden");
     };
 
-    const { register, handleSubmit } = useForm<IFormInput>()
-    const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+    const { register, handleSubmit } = useForm<IFormInput>();
+    const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
     return (
         <>
@@ -68,7 +70,9 @@ export default function Welcome({
                 </CardFooter>
             </Card>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <ThemeSelector />
+
+            {/* <form onSubmit={handleSubmit(onSubmit)}>
                 <label>First Name</label>
                 <input {...register("firstName")} />
                 <label>Gender Selection</label>
@@ -78,7 +82,7 @@ export default function Welcome({
                     <option value="other">other</option>
                 </select>
                 <input type="submit" />
-            </form>
+            </form> */}
 
             {/* <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
                 <img id="background" className="absolute -left-20 top-0 max-w-[877px]" src="https://laravel.com/assets/img/welcome/background.svg" />
