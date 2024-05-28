@@ -8,10 +8,18 @@
         "php": "^8.2",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.0",
+        "laravel/nova": "^4.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "outl1ne/nova-translatable": "^2.2",
         "tightenco/ziggy": "^2.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "require-dev": {
         "fakerphp/faker": "^1.23",
         "laravel/breeze": "^2.0",
@@ -22,6 +30,7 @@
         "phpunit/phpunit": "^11.0.1",
         "spatie/laravel-ignition": "^2.4"
     },
+
     "autoload": {
         "psr-4": {
             "App\\": "app/",
@@ -32,7 +41,11 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Helpers/system.php",
+            "app/Helpers/functions.php"
+            ]
     },
     "scripts": {
         "post-autoload-dump": [
