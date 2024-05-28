@@ -12,8 +12,8 @@ import {
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { ThemeSelector } from "@/Components/header/partials/theme-selector";
-import { Button } from "@/shadcn";
-
+import { Button, Icon } from "@/shadcn";
+import { useTranslation } from 'react-i18next';
 enum GenderEnum {
     female = "female",
     male = "male",
@@ -36,6 +36,7 @@ export default function Welcome({
     laravelVersion,
     phpVersion,
 }: PageProps<{ laravelVersion: string; phpVersion: string }>) {
+    const { t, i18n } = useTranslation();
     const handleImageError = () => {
         document
             .getElementById("screenshot-container")
@@ -79,6 +80,18 @@ export default function Welcome({
                 <Button variant="outline">outline</Button>
                 <Button variant="secondary">secondary</Button>
             </div>
+
+            <h1>{t('Welcome to React')}</h1>
+
+            <div>
+                <Icon
+                name="search"
+                className=" h-4 w-4 text-muted-foreground"
+              />
+            </div>
+            
+
+
 
             {/* <form onSubmit={handleSubmit(onSubmit)}>
                 <label>First Name</label>
