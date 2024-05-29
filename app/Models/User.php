@@ -6,12 +6,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Nova\Auth\Impersonatable;
 use Spatie\Translatable\HasTranslations;
 
 class User extends Authenticatable
 {
 
-    use HasFactory, Notifiable,HasTranslations;
+    use HasFactory, Notifiable,HasTranslations,Impersonatable;
     public $translatable = ['name'];
 
     /**

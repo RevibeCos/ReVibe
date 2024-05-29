@@ -11,7 +11,6 @@ class CartProduct extends Model
 
     protected  $guarded=[];
 
-    // Define relationships
     public function cart()
     {
         return $this->belongsTo(Cart::class);

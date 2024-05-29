@@ -17,7 +17,7 @@ class Main extends Dashboard
     {
         return [
             // new Help,
-            new MainMain(),
+            // new MainMain(),
 
         ];
     }
