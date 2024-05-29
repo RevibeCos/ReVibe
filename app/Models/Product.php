@@ -68,17 +68,5 @@ class Product extends Model
         return $this->rates()->avg('rating');
     }
 
-    public function getTopSellerProducts($limit = 5)
-    {
-        return $this->orderBy('created_at', 'desc')->limit($limit)->get();
-        //you can use latest() instead of orderBy('created_at', 'desc')
-        // Assuming you have a field indicating sales count, adjust the field name accordingly
-        // return $this->orderBy('sales_count', 'desc')->limit($limit)->get();
-    }
 
-    public function getSpecialProducts($limit = 5)
-    {
-        return $this->orderBy('created_at', 'desc')->limit($limit)->get();
-        // return $this->where('is_special', true)->limit($limit)->get();
-    }
 }
