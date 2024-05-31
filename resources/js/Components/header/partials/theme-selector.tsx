@@ -7,7 +7,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
-import { useTheme } from "@/provider/theme-provider";
+import { useTheme } from "@/providers/theme-provider";
 
 export function ThemeSelector() {
     const { setTheme } = useTheme();
