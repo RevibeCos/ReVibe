@@ -18,13 +18,6 @@ class Category extends Model
     protected $dates = ['deleted_at'];
 
 
-
-    public static function getSupCategories()
-    {
-        return self::whereHas('parent', function ($query) {
-            $query->whereNull('parent_id');
-        })->get();
-    }
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
@@ -35,16 +28,5 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
-    public function isParent()
-    {
-        return $this->children()->exists();
-    }
-    public function isNotChild()
-    {
-        return is_null($this->parent_id);
-    }
-    public function isNotParent()
-    {
-        return !$this->children()->exists();
-    }
+
 }
