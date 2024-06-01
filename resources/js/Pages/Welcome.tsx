@@ -13,6 +13,7 @@ import { Button, Icon } from "@/shadcn";
 import TranslationsProvider from "@/providers/translation-provider";
 import { useTranslations } from "@/hooks";
 import Test from "./Test";
+import LanguageSelector from "@/Components/header/partials/LanguageSelector";
 
 const i18nNamespaces = ["welcome"];
 
@@ -24,13 +25,14 @@ export default function Welcome() {
     const { i18n, resources } = translations;
     return (
         <TranslationsProvider
-        locale={i18n.language}
-        namespaces={i18nNamespaces}
-        resources={resources}
+            locale={i18n.language}
+            namespaces={i18nNamespaces}
+            resources={resources}
         >
             <Head title="Welcome" />
             <div className="flex flex-row mt-16 mx-16 gap-x-6 ">
                 <ThemeSelector />
+                <LanguageSelector />
                 <Badge className="mb-2" variant="outline">
                     Badge
                 </Badge>
