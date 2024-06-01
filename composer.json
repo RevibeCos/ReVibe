@@ -6,13 +6,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "eminiarts/nova-tabs": "^2.2",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.0",
         "laravel/nova": "^4.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "outl1ne/nova-settings": "^5.2",
         "outl1ne/nova-translatable": "^2.2",
-        "tightenco/ziggy": "^2.0"
+        "tightenco/ziggy": "^2.0",
+        "whitecube/nova-flexible-content": "^1.1"
     },
     "repositories": [
         {

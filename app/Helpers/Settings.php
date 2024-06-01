@@ -94,45 +94,45 @@ class Settings
             ];
         });
 
-        // NovaSettings::addSettingsFields([
-        //     new Tabs(
-        //         __('Tabs'),
-        //         [
+        NovaSettings::addSettingsFields([
+            new Tabs(
+                __('Tabs'),
+                [
 
-        //             __('header') => [
-        //                 Image::make('Logo', 'logo'),
+                    __('header') => [
+                        Image::make('Logo', 'logo'),
 
-        //                 Flexible::make('Nav item')
-        //                     ->addLayout('Add Item', 'item', [
-        //                         Text::make('Title'),
-        //                         Text::make('Link'),
+                        Flexible::make('Nav item')
+                            ->addLayout('Add Item', 'item', [
+                                Text::make('Title'),
+                                Text::make('Link'),
 
-        //                         Image::make('Logo', 'logo'),
+                                Image::make('Logo', 'logo'),
 
-        //                     ])->button('Add Item'),
-
-
-
-        //             ],   __('Footer') => [
-        //                 Image::make('image', 'image'),
-
-        //                 Text::make('Text', 'text_footer'),
-        //                 Text::make('Sup Text', 'sup_text_footer')->placeholder('Ramat aviv c, TLV'),
+                            ])->button('Add Item'),
 
 
 
-        //             ] , __('Social media') => [
-        //                 Text::make('Facebook', 'facebook')->placeholder('https://facebook.com/USERNAME'),
-        //                 Text::make('Instagram', 'instagram')->placeholder('https://instagram.com/USERNAME'),
-        //                 Text::make('Whatsapp', 'whatsapp')->placeholder('+972521234567'),
-        //                 Text::make('Email', 'email')->placeholder('Ramat aviv c, TLV'),
+                    ],   __('Footer') => [
+                        Image::make('image', 'image'),
+
+                        Text::make('Text', 'text_footer'),
+                        Text::make('Sup Text', 'sup_text_footer')->placeholder('Ramat aviv c, TLV'),
 
 
-        //             ] ,
-        //         ]
-        //     ),
 
-        // ], [], 'Setting');
+                    ] , __('Social media') => [
+                        Text::make('Facebook', 'facebook')->placeholder('https://facebook.com/USERNAME'),
+                        Text::make('Instagram', 'instagram')->placeholder('https://instagram.com/USERNAME'),
+                        Text::make('Whatsapp', 'whatsapp')->placeholder('+972521234567'),
+                        Text::make('Email', 'email')->placeholder('Ramat aviv c, TLV'),
+
+
+                    ] ,
+                ]
+            ),
+
+        ], [], 'Setting');
 
 
 
