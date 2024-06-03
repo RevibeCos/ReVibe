@@ -1,4 +1,4 @@
-import { useState } from "react"; // Import useState hook
+import { useState, useEffect } from "react";
 import { DropdownMenu, Icon } from "@/shadcn";
 import { bake_cookie } from "sfcookies";
 import { useTranslation } from "react-i18next";
@@ -7,10 +7,23 @@ import { router } from "@inertiajs/react";
 
 const LanguageSelector = () => {
     const { i18n } = useTranslation();
+    const [language, setLanguage] = useState(i18n.language);
+
     const handleLangChange = (locale: string) => {
         bake_cookie("x-current-lang", locale);
-        router.get(window.location.href);
+        i18n.changeLanguage(locale).then(() => {
+            setLanguage(locale);
+            router.get(window.location.href, {
+                // preserveScroll: true,
+                // preserveState: true,
+                // replace: true,
+            });
+        });
     };
+
+    useEffect(() => {
+        setLanguage(i18n.language);
+    }, [i18n.language]);
 
     return (
         <DropdownMenu.Root icon={<Icon name="languages" />}>
@@ -21,9 +34,7 @@ const LanguageSelector = () => {
                 English
                 <Check
                     className={`h-4 w-4 ml-auto ${
-                        i18n.language === "en"
-                            ? "text-primary"
-                            : "text-transparent"
+                        language === "en" ? "text-primary" : "text-transparent"
                     }`}
                 />
             </DropdownMenu.Item>
@@ -34,9 +45,7 @@ const LanguageSelector = () => {
                 عربي
                 <Check
                     className={`h-4 w-4 ml-auto ${
-                        i18n.language === "ar"
-                            ? "text-primary"
-                            : "text-transparent"
+                        language === "ar" ? "text-primary" : "text-transparent"
                     }`}
                 />
             </DropdownMenu.Item>

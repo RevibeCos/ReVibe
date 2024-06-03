@@ -2,6 +2,28 @@
   @tailwind components;
   @tailwind utilities;
 
+
+  @font-face {
+    font-family: 'Tajawal-Bold';
+    src: url('/public/assets/fonts/Tajawal-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Tajawal-Regular';
+    src: url('/src/assets/fonts/Tajawal-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Tajawal-Light';
+    src: url('/src/assets/fonts/Tajawal-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+
   @layer base {
     :root {
       --background: 0 0% 100%;

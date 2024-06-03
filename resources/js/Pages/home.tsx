@@ -1,4 +1,3 @@
-import { Head } from "@inertiajs/react";
 import { Badge } from "@/shadcn/ui/badge";
 import {
     Card,
@@ -14,11 +13,13 @@ import TranslationsProvider from "@/providers/translation-provider";
 import { useTranslations } from "@/hooks";
 import Test from "./Test";
 import LanguageSelector from "@/Components/header/partials/LanguageSelector";
+import Header from "@/Components/header/header";
 
-const i18nNamespaces = ["welcome"];
+const i18nNamespaces = ["home"];
 
-export default function Welcome() {
+export default function Home() {
     const translations = useTranslations(i18nNamespaces);
+
     if (!translations) {
         return <div>Loading...</div>;
     }
@@ -29,7 +30,6 @@ export default function Welcome() {
             namespaces={i18nNamespaces}
             resources={resources}
         >
-            <Head title="Welcome" />
             <div className="flex flex-row mt-16 mx-16 gap-x-6 ">
                 <ThemeSelector />
                 <LanguageSelector />

@@ -27,7 +27,6 @@ export default async function initTranslations(
             })
         );
     }
-
     await i18nInstance.init({
         lng: locale,
         resources,
