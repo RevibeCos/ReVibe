@@ -101,6 +101,7 @@ class Settings
 
                     __('header') => [
                         Image::make('Logo', 'logo'),
+                        Image::make('Black Logo', 'Black_logo'),
 
                         Flexible::make('Nav item')
                             ->addLayout('Add Item', 'item', [
