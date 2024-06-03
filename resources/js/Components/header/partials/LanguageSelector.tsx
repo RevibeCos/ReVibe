@@ -1,4 +1,4 @@
-import { useState } from 'react'; // Import useState hook
+import { useState } from "react"; // Import useState hook
 import { DropdownMenu, Icon } from "@/shadcn";
 import { bake_cookie } from "sfcookies";
 import { useTranslation } from "react-i18next";
@@ -7,18 +7,9 @@ import { router } from "@inertiajs/react";
 
 const LanguageSelector = () => {
     const { i18n } = useTranslation();
-    const [language, setLanguage] = useState(i18n.language); 
-
-    const handleLangChange = async (locale: string) => {
+    const handleLangChange = (locale: string) => {
         bake_cookie("x-current-lang", locale);
-        await i18n.changeLanguage(locale);
-        console.log("Language after change:", i18n.language); 
-        setLanguage(i18n.language); 
-        router.visit(window.location.href, {
-            preserveScroll: true,
-            preserveState: true,
-            replace: true,
-        });
+        router.get(window.location.href);
     };
 
     return (
@@ -30,7 +21,7 @@ const LanguageSelector = () => {
                 English
                 <Check
                     className={`h-4 w-4 ml-auto ${
-                        language === "en" // Use the state variable 'language' instead of 'i18n.language'
+                        i18n.language === "en"
                             ? "text-primary"
                             : "text-transparent"
                     }`}
@@ -43,7 +34,7 @@ const LanguageSelector = () => {
                 عربي
                 <Check
                     className={`h-4 w-4 ml-auto ${
-                        language === "ar" // Use the state variable 'language' instead of 'i18n.language'
+                        i18n.language === "ar"
                             ? "text-primary"
                             : "text-transparent"
                     }`}
