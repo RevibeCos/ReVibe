@@ -22,7 +22,7 @@ class HomeController extends Controller
             'page_title' => 'Home',
             'icon' => 'fas fa-user-tie',
             'slider' => Page::where('type', '1')->get(),
-            'categories' => Category::where('parent_id', null)->latest()->take(4)->get(),
+            'categories' => Category::with('children')->where('parent_id', null)->latest()->take(4)->get(),
             'supCategories' => Category::whereHas('parent', function ($query) {
                 $query->whereNull('parent_id');
             })->get(),
