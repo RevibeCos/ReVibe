@@ -1,22 +1,17 @@
 import { useTranslations } from "@/hooks";
 import TranslationsProvider from "@/providers/translation-provider";
 import Header from "./header";
-import LanguageSelector from "./partials/LanguageSelector";
-const i18nNamespaces = ["header"];
+import React, { PropsWithChildren, Suspense } from "react";
 
-export default function HeaderWrapper() {
-    const translations = useTranslations(i18nNamespaces);
-    if (!translations) {
-        return <div>Loading...</div>;
-    }
-    const { i18n, resources } = translations;
+const i18nNamespaces: string[] = ["header"];
+
+export const HeaderWrapper: React.FC<PropsWithChildren<{}>> = ({
+    children,
+}) => {
     return (
-        <TranslationsProvider
-            locale={i18n.language}
-            namespaces={i18nNamespaces}
-            resources={resources}
-        >
+        <Suspense fallback={<div>Loading translations...</div>}>
             <Header />
-        </TranslationsProvider>
+            <main>{children}</main>
+        </Suspense>
     );
-}
+};

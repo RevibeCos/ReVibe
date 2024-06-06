@@ -1,14 +1,15 @@
 import React from "react";
 import { ThemeProvider } from "./theme-provider";
-import HeaderWrapper from "@/Components/header/header-wrapper";
+import I18nProviderWrapper from './i18n-provider'
 
 const ProviderWrapper: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
     return (
         <ThemeProvider defaultTheme="system">
-            <HeaderWrapper />
+            <I18nProviderWrapper i18nNamespaces={['default']}>
             {children}
+            </I18nProviderWrapper>
         </ThemeProvider>
     );
 };
