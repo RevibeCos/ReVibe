@@ -1,9 +1,13 @@
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./partials/LanguageSelector";
 import { ThemeSelector } from "./partials/theme-selector";
+import { usePage } from "@inertiajs/react";
 const Header = () => {
-    const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation(['home']);
     const isRTL = i18n.dir() === "rtl";
+
+    const {component,props} = usePage();
+    console.log("🚀 ~ Header ~ props:", props)
 
     return (
         <header
