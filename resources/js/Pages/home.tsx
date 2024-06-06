@@ -13,11 +13,12 @@ import Test from "./Test";
 import LanguageSelector from "@/Components/header/partials/LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { HeaderWrapper } from "@/Components/header/header-wrapper";
+import AppLayout from "@/Layouts/app-wrapper";
 
 const i18nNamespaces = ["home"];
 
 export default function Home() {
-    const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation(i18nNamespaces);
     const isRTL = i18n.dir() === "rtl";
     return (
         <>
@@ -58,4 +59,7 @@ export default function Home() {
     );
 }
 
-Home.layout = (page: any) => <HeaderWrapper children={page} />;
+Home.layout = (page: any) => (
+    <AppLayout i18nNamespaces={i18nNamespaces} 
+    children={page} />
+);
