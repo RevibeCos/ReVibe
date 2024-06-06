@@ -12,8 +12,7 @@ import { Button, Icon } from "@/shadcn";
 import Test from "./Test";
 import LanguageSelector from "@/Components/header/partials/LanguageSelector";
 import { useTranslation } from "react-i18next";
-import { HeaderWrapper } from "@/Components/header/header-wrapper";
-import AppLayout from "@/Layouts/app-wrapper";
+import AppLayout from "@/Layouts/app-layout";
 
 const i18nNamespaces = ["home"];
 

@@ -1,13 +1,13 @@
 import React from "react";
 import { useTranslations } from "@/hooks";
-import TranslationsProvider from "./translation-provider";
+import TranslationContextProvider from "./translation-context-provider";
 
 type I18nProviderWrapperProps = {
     children: React.ReactNode;
     i18nNamespaces: string[];
 };
 
-const I18nProviderWrapper: React.FC<I18nProviderWrapperProps> = ({
+const TranslationLoaderWrapper: React.FC<I18nProviderWrapperProps> = ({
     children,
     i18nNamespaces,
 }) => {
@@ -24,14 +24,14 @@ const I18nProviderWrapper: React.FC<I18nProviderWrapperProps> = ({
     const { i18n, resources } = translations;
 
     return (
-        <TranslationsProvider
+        <TranslationContextProvider
             locale={i18n.language}
             namespaces={i18nNamespaces}
             resources={resources}
         >
             {children}
-        </TranslationsProvider>
+        </TranslationContextProvider>
     );
 };
 
-export default I18nProviderWrapper;
+export default TranslationLoaderWrapper;

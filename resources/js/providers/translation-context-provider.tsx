@@ -10,7 +10,7 @@ type TranslationsProviderProps = {
     resources?: Resource;
 }
 
-const TranslationsProvider: React.FC<TranslationsProviderProps> = ({ children, locale, namespaces, resources }) => {
+const TranslationContextProvider: React.FC<TranslationsProviderProps> = ({ children, locale, namespaces, resources }) => {
     const i18n = React.useMemo(() => createInstance(), []);
 
     React.useEffect(() => {
@@ -20,4 +20,4 @@ const TranslationsProvider: React.FC<TranslationsProviderProps> = ({ children, l
     return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 };
 
-export default TranslationsProvider;
+export default TranslationContextProvider;

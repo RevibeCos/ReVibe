@@ -1,5 +1,5 @@
 import { useTranslations } from "@/hooks";
-import TranslationsProvider from "@/providers/translation-provider";
+import TranslationContextProvider from "@/providers/translation-context-provider";
 import Header from "./header";
 import React, { PropsWithChildren, Suspense } from "react";
 
