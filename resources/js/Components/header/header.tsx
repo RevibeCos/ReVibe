@@ -34,7 +34,7 @@ const Header = () => {
                     <div className="flex flex-row items-center  basis-5/6 border-r py-2">
                         <div className="flex flex-row basis-2/6">
                             <Link href="/">
-                                <img src="https://media.discordapp.net/attachments/1239894547761467424/1247590968761258084/revibe_1.png?ex=66633822&is=6661e6a2&hm=ae3be938b001ffff891a82c4cc7c723c8dd8d07e36def28244c3cd20e863487a&=&format=webp&quality=lossless"  />
+                                <img src="https://res.cloudinary.com/dcudlrz6n/image/upload/v1717703151/unkt2j2b5uthabgom1o3.webp"  />
                             </Link>
                         </div>
                         <div className="flex flex-row basis-4/6">
