@@ -19,7 +19,15 @@ class AdminSeeder extends Seeder
             'phone_number' => '0569465465',
             'email' => 'test@test.test',
             'password' => Hash::make('password'),
+            
 
+        ]);
+        DB::table('admins')->insert([
+            'name' => 'Ameed',
+            'username' => 'Ameed Asmah',
+            'phone_number' => '0599043747',
+            'email' => 'ameed.asmah@gmail.com',
+            'password' => Hash::make('1020304050'),
         ]);
 
     }
