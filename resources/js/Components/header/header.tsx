@@ -2,7 +2,8 @@ import { useTranslation } from "react-i18next";
 import LanguageSelector from "./partials/LanguageSelector";
 import { ThemeSelector } from "./partials/theme-selector";
 import { Link, usePage } from "@inertiajs/react";
-import { Button, Input,Icon } from "@/shadcn";
+import { Button, Input, Icon } from "@/shadcn";
+import { constants } from "@/constants/cloudinary";
 const Header = () => {
     const { t, i18n } = useTranslation(["home"]);
     const isRTL = i18n.dir() === "rtl";
@@ -34,7 +35,7 @@ const Header = () => {
                     <div className="flex flex-row items-center  basis-5/6 border-r py-2">
                         <div className="flex flex-row basis-2/6">
                             <Link href="/">
-                                <img src="https://res.cloudinary.com/dcudlrz6n/image/upload/v1717703151/unkt2j2b5uthabgom1o3.webp"  />
+                                <img src={constants.website_logo} />
                             </Link>
                         </div>
                         <div className="flex flex-row basis-4/6">
