@@ -14,9 +14,6 @@ const LanguageSelector = () => {
         i18n.changeLanguage(locale).then(() => {
             setLanguage(locale);
             router.get(window.location.href, {
-                // preserveScroll: true,
-                // preserveState: true,
-                // replace: true,
             });
         });
     };
