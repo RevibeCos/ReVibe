@@ -1,4 +1,3 @@
-import { Head } from "@inertiajs/react";
 import { Badge } from "@/shadcn/ui/badge";
 import {
     Card,
@@ -10,26 +9,18 @@ import {
 } from "@/shadcn/ui/card";
 import { ThemeSelector } from "@/Components/header/partials/theme-selector";
 import { Button, Icon } from "@/shadcn";
-import TranslationsProvider from "@/providers/translation-provider";
-import { useTranslations } from "@/hooks";
 import Test from "./Test";
 import LanguageSelector from "@/Components/header/partials/LanguageSelector";
+import { useTranslation } from "react-i18next";
+import AppLayout from "@/Layouts/app-layout";
 
-const i18nNamespaces = ["welcome"];
+const i18nNamespaces = ["home"];
 
-export default function Welcome() {
-    const translations = useTranslations(i18nNamespaces);
-    if (!translations) {
-        return <div>Loading...</div>;
-    }
-    const { i18n, resources } = translations;
+export default function Home() {
+    const { t, i18n } = useTranslation(i18nNamespaces);
+    const isRTL = i18n.dir() === "rtl";
     return (
-        <TranslationsProvider
-            locale={i18n.language}
-            namespaces={i18nNamespaces}
-            resources={resources}
-        >
-            <Head title="Welcome" />
+        <>
             <div className="flex flex-row mt-16 mx-16 gap-x-6 ">
                 <ThemeSelector />
                 <LanguageSelector />
@@ -62,8 +53,12 @@ export default function Welcome() {
                     name="search"
                     className=" h-4 w-4 text-muted-foreground"
                 />
-                <Test />
             </div>
-        </TranslationsProvider>
+        </>
     );
 }
+
+Home.layout = (page: any) => (
+    <AppLayout i18nNamespaces={i18nNamespaces} 
+    children={page} />
+);

@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use Ganyicz\NovaCallbacks\HasCallbacks;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\{BelongsTo, DateTime, HasMany, ID, Text, Image, Number};
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaTranslatable\HandlesTranslatable;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class Category extends Resource
 {
@@ -45,18 +47,15 @@ class Category extends Resource
     {
         return [
             ID::make()->sortable(),
-            // Text::make('Name'),
 
             Text::make('Name')
-            ->rules('required', 'min:2')
-            ->translatable(),
-            Text::make('Description','description')
-            ->rules('required', 'min:2')
-            ->translatable(),
+                ->rules('required', 'min:2')
+                ->translatable(),
+            Text::make('Description', 'description')
+                ->rules('required', 'min:2')
+                ->translatable(),
 
-            Image::make('Image')
-            ->disk('Category')
-            ->rules('required'),
+            Image::make('image'),
 
             BelongsTo::make('Parent', 'parent', Category::class)->nullable(),
             HasMany::make('children', 'children', Category::class)->nullable(),
@@ -66,6 +65,14 @@ class Category extends Resource
 
             DateTime::make('Updated At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
         ];
+    }
+    protected static function fillFields(NovaRequest $request, $model, $fields)
+    {
+        $uploadedFileUrl = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $fillFields = parent::fillFields($request, $model, $fields);
+        $modelObject = $fillFields[0];
+        $modelObject['image'] = $uploadedFileUrl;
+        return $fillFields;
     }
 
     /**
