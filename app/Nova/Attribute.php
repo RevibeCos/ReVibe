@@ -44,7 +44,7 @@ class Attribute extends Resource
 
             Text::make('Name'),
 
-            Image::make('icon')->disk('Attribute'),
+            Image::make('icon'),
 
         ];
     }

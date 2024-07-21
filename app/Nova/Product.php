@@ -75,7 +75,13 @@ class Product extends Resource
 
         ->showCreateRelationButton(),
 
-        BelongsToMany::make(__('attributes'), 'attributes', attribute::class)
+        BelongsToMany::make(__('attributes'), 'attributes', attribute::class)->fields(function () {
+            return [
+                // Number::make('price', 'price'),
+                Text::make(__('limit'), 'limit')
+                    ->translatable(),
+            ];
+        })
         ->searchable()
 
         ->showCreateRelationButton(),
