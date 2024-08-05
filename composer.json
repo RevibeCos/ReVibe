@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.9",
         "outl1ne/nova-settings": "^5.2",
         "outl1ne/nova-translatable": "^2.2",
+        "spatie/laravel-enum": "^3.1",
         "tightenco/ziggy": "^2.0",
         "whitecube/nova-flexible-content": "^1.1"
     },
