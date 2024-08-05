@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Enums\PageTypes;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Offer;
@@ -21,19 +23,19 @@ class HomeController extends Controller
         $data = [
             'page_title' => 'Home',
             'icon' => 'fas fa-user-tie',
-            'slider' => Page::where('type', '1')->get(),
+            'slider' => Page::where('type', PageTypes::slider->value)->get(),
+            'offers' => Offer::latest()->take(2)->get(),
+            'specialProducts' => ProductResource::collection(Product::where('in_home', 1)->take(6)->get()),
+            'topSellerProducts' => ProductResource::collection(Product::select('products.id', 'products.name', DB::raw('SUM(cart_products.quantity) as total_quantity'))
+                ->join('cart_products', 'products.id', '=', 'cart_products.product_id')
+                ->groupBy('products.id', 'products.name')
+                ->orderByDesc('total_quantity')
+                ->get()),
+            'newestProducts' =>ProductResource::collection(Product::orderBy('created_at', 'desc')->take(10)->get()),
             'categories' => Category::with('children')->where('parent_id', null)->latest()->take(4)->get(),
             'supCategories' => Category::whereHas('parent', function ($query) {
                 $query->whereNull('parent_id');
             })->get(),
-            'offers' => Offer::latest()->take(2)->get(),
-            'specialProducts' => Product::where('in_home', 1)->get(),
-            'topSellerProducts' => Product::select('products.id', 'products.name', DB::raw('SUM(cart_product.quantity) as total_quantity'))
-                ->join('cart_product', 'products.id', '=', 'cart_product.product_id')
-                ->groupBy('products.id', 'products.name')
-                ->orderByDesc('total_quantity')
-                ->get(),
-            'newestProducts' => Product::orderBy('created_at', 'desc')->take(10)->get(),
             'Companies' => Company::all(),
         ];
 
