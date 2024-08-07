@@ -48,7 +48,6 @@ class Settings
 
 
                 MenuSection::make('Admin', [
-                    MenuItem::externalLink('Task Manger', 'https://task-manger.sadeemlanding.com/')->openInNewTab(),
                     MenuItem::resource(Admin::class),
                 ])->icon('user')->collapsable(),
 

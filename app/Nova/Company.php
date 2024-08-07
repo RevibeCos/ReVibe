@@ -50,9 +50,9 @@ class Company extends Resource
             ->rules('required', 'min:2'),
 
             Text::make('Description','description')
-            ->translatable(),
+            ->translatable()->rules('required'),
 
-            Image::make('Image'),
+            Image::make('Image')->rules('required'),
 
 
             DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),
