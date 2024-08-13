@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.9",
         "outl1ne/nova-settings": "^5.2",
         "outl1ne/nova-translatable": "^2.2",
+        "socialiteproviders/apple": "^5.6",
         "socialiteproviders/facebook": "^4.1",
         "socialiteproviders/google": "^4.1",
         "spatie/laravel-enum": "^3.1",
