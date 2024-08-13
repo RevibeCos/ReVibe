@@ -11,12 +11,18 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+
         @routes
         @viteReactRefresh
         @vite(['resources/js/app.tsx', "resources/js/Pages/{$page['component']}.tsx"])
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
+       <a href="{{ route('auth.facebook') }}" class="btn btn-primary"> Login with Google </a>
+
+        <a href="{{ route('google.redirect') }}" class="btn btn-primary"> Login with Google </a>
         @inertia
     </body>
 </html>
+{{--        <a href="{{ route('google.redirect') }}" class="btn btn-primary"> Login with Google </a> --}}
+

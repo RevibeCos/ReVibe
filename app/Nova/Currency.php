@@ -3,34 +3,35 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\{ID, Text, Image, Number, DateTime, Textarea};
 
-class Attribute extends Resource
+class Currency extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Attribute>
+     * @var class-string<\App\Models\Currency>
      */
-    public static $model = \App\Models\Attribute::class;
+    public static $model = \App\Models\Currency::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'code';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = [
-        'id',
+     public static $search = [
+        'id', 'code', 'symbol'
     ];
-
     /**
      * Get the fields displayed by the resource.
      *
@@ -42,10 +43,18 @@ class Attribute extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name'),
+            Text::make('Code')
+                ->sortable()
+                ->rules('required', 'max:3'),
 
-            Image::make('icon'),
+            Text::make('Symbol')
+                ->sortable()
+                ->rules('required', 'max:5'),
 
+            Number::make('Exchange Rate')
+                ->sortable()
+                ->rules('required', 'numeric', 'min:0')
+                ->step(0.00000001),
         ];
     }
 

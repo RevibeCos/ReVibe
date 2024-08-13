@@ -7,21 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
-class Company extends Model
+
+class Currency extends Model
 {
-    use HasFactory, SoftDeletes, HasTranslations;
+    use HasFactory ,SoftDeletes,HasTranslations;
     public $translatable = ['description'];
 
     protected  $guarded=[];
-
-    protected $dates = ['deleted_at'];
-
-    protected $hidden = [
-        'deleted_at',
-    ];
-
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'company_id');
-    }
 }
