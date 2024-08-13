@@ -24,7 +24,7 @@ class Company extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -50,9 +50,9 @@ class Company extends Resource
             ->rules('required', 'min:2'),
 
             Text::make('Description','description')
-            ->translatable(),
+            ->translatable()->rules('required'),
 
-            Image::make('Image'),
+            Image::make('Image')->rules('required'),
 
 
             DateTime::make('Created At')->sortable()->hideWhenCreating()->hideWhenUpdating(),

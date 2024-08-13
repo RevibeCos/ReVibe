@@ -53,7 +53,9 @@ class Page extends Resource
 
             Select::make('Type')->options([
                 '1' => 'slider',
-            ])->nullable(),
+                '2' => 'our story',
+
+            ])->nullable()->displayUsingLabels(),
 
         ];
     }

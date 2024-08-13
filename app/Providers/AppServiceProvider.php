@@ -11,10 +11,9 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-
         Inertia::share('props', function () {
             return [
-                'categories' => Category::with('children')->where('parent_id', null)->latest()->take(4)->get(),
+                'locale' => config('app.locale'),
             ];
         });
     }

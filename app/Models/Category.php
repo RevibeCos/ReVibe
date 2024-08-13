@@ -13,7 +13,7 @@ class Category extends Model
 
     public $translatable = ['name', 'description'];
 
-    protected  $guarded=[];
+    protected  $guarded = [];
 
     protected $dates = ['deleted_at'];
 
@@ -28,5 +28,8 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
-
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_categories');
+    }
 }

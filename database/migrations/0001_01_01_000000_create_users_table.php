@@ -17,12 +17,14 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('apple_id')->nullable();
             $table->string('phone_number')->unique()->nullable();
             $table->timestamp('phone_number_verified_at')->nullable();
             $table->char('is_active',1)->default(1);
             $table->string('image')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
-            $table->json('address')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -9,6 +9,7 @@ use App\Nova\Category;
 use App\Nova\City;
 use App\Nova\Company;
 use App\Nova\Coupon;
+use App\Nova\Currency;
 use App\Nova\Dashboards\Main;
 use App\Nova\Favorite;
 use App\Nova\FormMessage;
@@ -48,11 +49,11 @@ class Settings
 
 
                 MenuSection::make('Admin', [
-                    MenuItem::externalLink('Task Manger', 'https://task-manger.sadeemlanding.com/')->openInNewTab(),
                     MenuItem::resource(Admin::class),
                 ])->icon('user')->collapsable(),
 
                 MenuSection::make('products', [
+                    MenuItem::resource(Currency::class),
                     MenuItem::resource(Company::class),
                     MenuItem::resource(Category::class),
                     MenuItem::resource(Tag::class),
