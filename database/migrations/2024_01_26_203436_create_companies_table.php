@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->string('image');
-            $table->char('is_active',1)->default(1);
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

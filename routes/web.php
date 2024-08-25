@@ -46,5 +46,5 @@ Route::get('/auth/facebook', [AuthenticatedSessionController::class, 'redirectTo
 Route::get('/auth/facebook/callback', [AuthenticatedSessionController::class, 'handleFacebookCallback']);
 
 Route::get('/apple/redirect', [AuthenticatedSessionController::class, 'redirectToApple'])->name('apple.redirect');
-Route::get('/auth/apple/callback', [AuthenticatedSessionController::class, 'handleAppleCallback'])->name('apple.callback');
+Route::get('/apple/callback', [AuthenticatedSessionController::class, 'handleAppleCallback'])->name('apple.callback');
 
