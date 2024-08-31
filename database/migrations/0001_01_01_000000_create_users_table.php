@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('apple_id')->nullable();
             $table->string('phone_number')->unique()->nullable();
             $table->timestamp('phone_number_verified_at')->nullable();
-            $table->char('is_active',1)->default(1);
+            $table->boolean('is_active')->default(1);
             $table->string('image')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->rememberToken();

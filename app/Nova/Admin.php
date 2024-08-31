@@ -3,7 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\{Gravatar, ID, Password, Text, };
+use Laravel\Nova\Fields\{Gravatar, ID, Password, Text,Image};
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Illuminate\Validation\Rules;
 
@@ -22,7 +22,7 @@ class Admin extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,6 +31,10 @@ class Admin extends Resource
      */
     public static $search = [
         'id',
+        'name',
+        'username',
+        'phone_number',
+        'email'
     ];
 
     /**
@@ -50,25 +54,31 @@ class Admin extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-                Text::make('UserName')
+            Text::make('Username')
+                ->sortable()
+                ->rules('nullable', 'max:255'),
+
+            Text::make('Phone Number')
                 ->sortable()
                 ->rules('required', 'max:255'),
-                text::make('Phone Number')   ->rules('required', 'max:255')->sortable(),
 
+
+            Image::make('Image')
+                ->sortable()
+                ->rules('nullable', 'max:255'),
 
             Text::make('Email')
-            ->filterable()
+                ->filterable()
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->creationRules('unique:admins,email')
+                ->updateRules('unique:admins,email,{{resourceId}}'),
+
 
             Password::make('Password')
                 ->onlyOnForms()
-                ->creationRules('required',Rules\Password::defaults())
+                ->creationRules('required', Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),
-
-
 
         ];
     }

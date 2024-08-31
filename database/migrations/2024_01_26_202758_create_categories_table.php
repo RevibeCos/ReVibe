@@ -16,7 +16,7 @@ return new class extends Migration
             $table->json('name');
             $table->longText('description');
             $table->string('image')->nullable();
-            $table->char('is_active',1)->default(1);
+            $table->boolean('is_active')->default(1);
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

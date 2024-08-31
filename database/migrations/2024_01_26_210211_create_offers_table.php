@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('website_price');
             $table->integer('limit_user')->nullable();
             $table->string('note')->nullable();
-            $table->char('is_active',1)->default(1);
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();
 
