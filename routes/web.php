@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\WebSiteController;
@@ -48,3 +49,11 @@ Route::get('/auth/facebook/callback', [AuthenticatedSessionController::class, 'h
 Route::get('/apple/redirect', [AuthenticatedSessionController::class, 'redirectToApple'])->name('apple.redirect');
 Route::get('/apple/callback', [AuthenticatedSessionController::class, 'handleAppleCallback'])->name('apple.callback');
 
+
+
+Route::prefix('cart')->group(function () {
+    Route::get('/add', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::get('/total', [CartController::class, 'total'])->name('cart.total');
+    Route::get('/content', [CartController::class, 'content'])->name('cart.content');
+});

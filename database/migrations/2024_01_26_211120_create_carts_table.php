@@ -16,9 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('session_id', 255)->nullable();
             $table->char('status', 1)->default('0');
-            $table->string('price');
-            $table->double('discount');
-            $table->double('total_price');
+            $table->string('price')->nullable();
+            $table->double('discount')->nullable();
+            $table->double('total_price')->nullable();
             $table->double('delivery_cost')->nullable();
             $table->unsignedBigInteger('coupon_id')->nullable();
             $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
