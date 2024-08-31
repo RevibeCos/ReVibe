@@ -47,7 +47,6 @@ class HomeController extends Controller
             'company' => CompanyResource::collection(Company::latest()->take(10)->get()),
             'our_story' => PageResource::collection(Page::where('type', PageTypes::ourStoryValue())->take(2)->get()),
         ];
-        // return $data;
         return Inertia::render('Home', $data);
     }
 
